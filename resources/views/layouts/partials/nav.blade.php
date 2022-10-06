@@ -1,12 +1,36 @@
 <nav class="py-2 bg-light border-bottom">
     <div class="container d-flex flex-wrap">
         <ul class="nav me-auto">
-            <li class="nav-item"><a href="/" class="nav-link link-dark px-2 active" aria-current="page">Hjem</a></li>
-            <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Afdelinger</a></li>
+            <li class="nav-item"><a href="/" class="nav-link px-2">Hjem</a></li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Afdelinger
+                </a>
+                <ul class="dropdown-menu dropdown-menu">
+                    <li><a class="dropdown-item" href="{{ route('activities.badminton') }}">Badminton</a></li>
+                    <li><a class="dropdown-item" href="{{ route('activities.soccer') }}">Fodbold</a></li>
+                    <li><a class="dropdown-item" href="{{ route('activities.handball') }}">Håndbold</a></li>
+                    <li><a class="dropdown-item" href="{{ route('activities.volley') }}">Volley</a></li>
+                    <li><a class="dropdown-item" href="{{ route('activities.swimming') }}">Svømning</a></li>
+                </ul>
+            </li>
+            <li class="nav-item"><a href="{{ route('sponsors') }}" class="nav-link px-2">Sponsorer</a></li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Om os
+                </a>
+                <ul class="dropdown-menu dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Omkring os</a></li>
+                    <li><a class="dropdown-item" href="#">Vedtægter</a></li>
+                </ul>
+            </li>
+            <li class="nav-item"><a href="/" class="nav-link px-2">Kontakt</a></li>
         </ul>
         <ul class="nav">
             @guest
-                <li class="nav-item"><a href="{{ route('login') }}" class="nav-link link-dark px-2">Log ind</a></li>
+                <li class="nav-item"><a href="{{ route('login') }}" class="nav-link px-2">Log ind</a></li>
             @else
                 <li class="nav-item dropdown">
                     <a id="navbarUserDropdown" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
@@ -59,8 +83,5 @@
             <img src="/logo.png" height="50" class="me-3">
             <span class="fs-4">AASI</span>
         </a>
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0" role="search">
-            <input type="search" class="form-control" placeholder="Søg..." aria-label="Søg">
-        </form>
     </div>
 </header>
