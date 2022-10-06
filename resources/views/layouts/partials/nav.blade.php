@@ -22,11 +22,11 @@
                     Om os
                 </a>
                 <ul class="dropdown-menu dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Omkring os</a></li>
-                    <li><a class="dropdown-item" href="#">Vedtægter</a></li>
+                    <li><a class="dropdown-item" href="{{ route('about-us') }}">Omkring os</a></li>
+                    <li><a class="dropdown-item" href="{{ route('by-laws') }}">Vedtægter</a></li>
                 </ul>
             </li>
-            <li class="nav-item"><a href="/" class="nav-link px-2">Kontakt</a></li>
+            <li class="nav-item"><a href="{{ route('contact') }}" class="nav-link px-2">Kontakt</a></li>
         </ul>
         <ul class="nav">
             @guest

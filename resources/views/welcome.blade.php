@@ -5,7 +5,7 @@
         style="background: linear-gradient(27deg, rgba(19, 41, 59, 0.3) 0%, rgba(18, 54, 37, 0.5) 64%, rgba(30, 14, 43, 0.625) 100%), center / cover no-repeat url('/garden.jpg');">
         <div class="col-md-5 p-lg-5 mx-auto my-5">
             <h1 class="display-4 font-weight-bold text-white text-uppercase">Aalborg Studenters Idrætsforening</h1>
-            <p class="lead font-weight-normal">Fjams</p>
+            <p class="lead font-weight-normal">Brødtekst</p>
         </div>
     </div>
 

@@ -1,7 +1,7 @@
-@extends('admin.layouts.app')
+@extends('layouts.app')
 
 @section('main')
     <div class="container mt-4">
-        Admin
+        Sponsors
     </div>
 @endsection
