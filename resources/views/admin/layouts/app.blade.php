@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>AASI</title>
+    <title>AASI – Admin</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -18,11 +18,9 @@
 </head>
 
 <body class="d-flex flex-column h-100">
-    @include('layouts.partials.nav')
+    @include('admin.layouts.partials.nav')
 
     @yield('main')
-
-    @include('layouts.partials.footer')
 
     @stack('scripts')
 </body>
