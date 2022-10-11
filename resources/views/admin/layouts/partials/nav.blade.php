@@ -1,9 +1,11 @@
 <nav class="py-2 bg-light border-bottom">
     <div class="container d-flex flex-wrap">
         <ul class="nav me-auto">
-            <li class="nav-item"><a href="/" class="nav-link link-dark px-2 active" aria-current="page">AASI
-                    – Admin</a></li>
+            <li class="nav-item"><a href="/" class="nav-link link-dark px-2 active me-4" aria-current="page">AASI</a>
+            </li>
             <li class="nav-item"><a href="{{ route('admin.users.index') }}" class="nav-link link-dark px-2">Brugere</a>
+            <li class="nav-item"><a href="{{ route('admin.sponsors.index') }}"
+                    class="nav-link link-dark px-2">Sponsorer</a>
             </li>
         </ul>
         <ul class="nav">
