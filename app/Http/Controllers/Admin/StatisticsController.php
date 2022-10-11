@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
+use App\Models\Offer;
 use App\Models\Sponsor;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class SponsorController extends Controller
+class StatisticsController extends Controller
 {
 	/**
 	 * Create a new controller instance.
@@ -26,6 +29,7 @@ class SponsorController extends Controller
 	{
 		return view('sponsors', [
 			'sponsors' => Sponsor::all(),
+			'offers' => Offer::all(),
 		]);
 	}
 }
