@@ -6,14 +6,16 @@
 - Homebrew (on MacOS)
 
 ## Windows
-- Download WLS2
-- Download Docker Desktop
-- Refer to https://laravel.com/docs/9.x/sail
-- Run "composer install" and "npm install"
-- Run "php artisan key:generate"
+- Download and install WLS2
+- Download and install Docker Desktop
+- Refer to Laravel docs for setting up Sail (https://laravel.com/docs/9.x/sail)
+- cd to repository path from terminal
+- Run "sail composer install" and "sail npm install"
+- Run "sail php artisan key:generate"
 
 ## MacOS
-- Download Laravel Valet via Composer
-- Install MySQL/mariadb via homebrew
+- Install Valet via Composer (https://laravel.com/docs/9.x/valet)
+- Install MySQL/MariaDB via Homebrew
+- cd to repository path from terminal
 - Run "composer install" and "npm install"
 - Run "php artisan key:generate"
