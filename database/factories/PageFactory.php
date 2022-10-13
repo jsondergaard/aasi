@@ -24,6 +24,8 @@ class PageFactory extends Factory
 			'name' => fake()->company(),
 			'markdown' => $faker->markdown(),
 			'author_id' => User::firstOrFail()->id,
+			'parent_id' => null,
+			'is_page' => 1,
 		];
 	}
 }
