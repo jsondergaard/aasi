@@ -2,30 +2,35 @@
     <div class="container d-flex flex-wrap">
         <ul class="nav me-auto">
             <li class="nav-item"><a href="/" class="nav-link px-2">Hjem</a></li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    Afdelinger
-                </a>
-                <ul class="dropdown-menu dropdown-menu">
-                    <li><a class="dropdown-item" href="{{ route('activities.badminton') }}">Badminton</a></li>
-                    <li><a class="dropdown-item" href="{{ route('activities.soccer') }}">Fodbold</a></li>
-                    <li><a class="dropdown-item" href="{{ route('activities.handball') }}">Håndbold</a></li>
-                    <li><a class="dropdown-item" href="{{ route('activities.volley') }}">Volley</a></li>
-                    <li><a class="dropdown-item" href="{{ route('activities.swimming') }}">Svømning</a></li>
-                </ul>
-            </li>
+            @foreach (\App\Models\Page::all() as $page)
+                @if ($page->children->count() > 0)
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="{{ $page->path }}" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ $page->name }}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu">
+                            @if ($page->is_page)
+                                <li>
+                                    <a class="dropdown-item" href="{{ $page->path }}">{{ $page->name }}</a>
+                                </li>
+                            @endif
+                            @foreach ($page->children as $child)
+                                <li>
+                                    <a class="dropdown-item" href="{{ $child->path }}">{{ $child->name }}</a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </li>
+                @endif
+
+                @if ($page->parent_id == 0 && !$page->children)
+                    <li class="nav-item">
+                        <a href="{{ $page->path }}" class="nav-link px-2">{{ $page->name }}</a>
+                    </li>
+                @endif
+            @endforeach
             <li class="nav-item"><a href="{{ route('sponsors') }}" class="nav-link px-2">Sponsorer</a></li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    Om os
-                </a>
-                <ul class="dropdown-menu dropdown-menu">
-                    <li><a class="dropdown-item" href="{{ route('about-us') }}">Omkring os</a></li>
-                    <li><a class="dropdown-item" href="{{ route('by-laws') }}">Vedtægter</a></li>
-                </ul>
-            </li>
             <li class="nav-item"><a href="{{ route('contact') }}" class="nav-link px-2">Kontakt</a></li>
         </ul>
         <ul class="nav">

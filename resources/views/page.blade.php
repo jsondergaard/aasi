@@ -2,6 +2,6 @@
 
 @section('main')
     <div class="container mt-4">
-        Soccer
+        {!! \GrahamCampbell\Markdown\Facades\Markdown::convert($page->markdown)->getContent() !!}
     </div>
 @endsection
