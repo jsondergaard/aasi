@@ -29,4 +29,28 @@ class SponsorController extends Controller
 			'sponsors' => Sponsor::all(),
 		]);
 	}
+
+	public function view(Sponsor $sponsor)
+	{
+		return view('admin.sponsors.view', [
+			'sponsor' => $sponsor,
+		]);
+	}
+
+	public function destroy(Sponsor $sponsor)
+	{
+		return null;
+	}
+
+	public function create()
+	{
+		return view('admin.sponsors.create');
+	}
+
+	public function edit()
+	{
+		return view('admin.sponsors.edit', [
+			'sponsor' => $sponsor,
+		]);
+	}
 }

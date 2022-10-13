@@ -2,7 +2,15 @@
 
 @section('main')
     <div class="container mt-4">
-        <table class="table">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Sponsorer</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+                <div class="btn-group me-2">
+                    <a href="{{ route('admin.sponsors.create') }}" class="btn btn-sm btn-outline-primary">Opret ny</a>
+                </div>
+            </div>
+        </div>
+        <table class="table table-borderless">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -17,7 +25,8 @@
                         <th scope="row">{{ $sponsor->id }}</th>
                         <td>{{ $sponsor->name }}</td>
                         <td>{{ $sponsor->created_at->diffForHumans() }}</td>
-                        <td><a href="#" class="btn btn-primary">Se mere</a></td>
+                        <td><a href="{{ route('admin.sponsors.view', $sponsor) }}" class="btn btn-outline-secondary">Se
+                                mere</a></td>
                     </tr>
                 @empty
                     <tr>
