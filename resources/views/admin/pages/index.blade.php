@@ -10,13 +10,14 @@
                 </div>
             </div>
         </div>
-        <table class="table">
+        <table class="table table-borderless">
             <thead>
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Forældre ID</th>
                     <th scope="col">Side</th>
                     <th scope="col">Oprettet</th>
+                    <th scope="col"></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -28,6 +29,18 @@
                         <td>{{ $page->name }}</td>
                         <td>{{ $page->created_at->diffForHumans() }}</td>
                         <td><a href="{{ route('admin.pages.edit', $page->slug) }}" class="btn btn-primary">Rediger</a></td>
+                        <td>
+                            @if ($page->children->count() > 0)
+                                <span class="small text-muted">Slet børn først.</span>
+                            @else
+                                <form action="{{ route('admin.pages.destroy', $page->slug) }}" method="POST"
+                                    onSubmit="return confirm('Er du sikker på du vil slette siden?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Slet</button>
+                                </form>
+                            @endif
+                        </td>
                     </tr>
                     @foreach ($page->children as $child)
                         <tr>
@@ -36,6 +49,14 @@
                             <td>{{ $child->name }}</td>
                             <td>{{ $child->created_at->diffForHumans() }}</td>
                             <td><a href="{{ route('admin.pages.edit', $child->slug) }}" class="btn btn-primary">Rediger</a>
+                            <td>
+                                <form action="{{ route('admin.pages.destroy', $child->slug) }}" method="POST"
+                                    onSubmit="return confirm('Er du sikker på du vil slette siden?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Slet</button>
+                                </form>
+                            </td>
                             </td>
                         </tr>
                     @endforeach
