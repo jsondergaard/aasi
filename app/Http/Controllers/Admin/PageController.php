@@ -35,6 +35,19 @@ class PageController extends Controller
 	}
 
 	/**
+	 * Create new page.
+	 *
+	 * @param Page $page
+	 * @return \Illuminate\Contracts\Support\Renderable
+	 */
+	public function create()
+	{
+		return view('admin.pages.create', [
+			'availablePages' => Page::all(),
+		]);
+	}
+
+	/**
 	 * Store the incoming page.
 	 *
 	 * @param StorePage $request
@@ -46,7 +59,8 @@ class PageController extends Controller
 			'name' => $request->name,
 			'markdown' => $request->markdown,
 			'parent_id' => ($request->parent_id == 0) ? null : $request->parent_id,
-			'is_page' => ($request->is_page) ? 0 : 1,
+			'is_page' => ($request->is_page) ? 1 : 0,
+			'author_id' => auth()->user()->id,
 		]);
 
 		return redirect(route('admin.pages.index'));

@@ -54,8 +54,8 @@
 
                 <div class="col-md-3">
                     <div class="form-group">
+                        <label for="is_page">Vis i dropdown</label>
                         @if ($page->children->count() > 0)
-                            <label for="is_page">Vis i dropdown</label>
                             <div class="form-check">
                                 <input class="form-check-input" name="is_page" type="checkbox" id="flexCheckChecked"
                                     @if ($page->is_page == 1) checked @endif>
@@ -70,7 +70,9 @@
                                 </span>
                             @endif
                         @else
-                            N/A når ingen børn
+                            <p class="text-muted">
+                                <small>N/A når ingen børn.</small>
+                            </p>
                         @endif
                     </div>
                 </div>
