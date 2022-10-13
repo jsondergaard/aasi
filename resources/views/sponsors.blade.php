@@ -2,6 +2,8 @@
 
 @section('main')
     <div class="container mt-4">
-        Sponsors
+        @foreach ($sponsors as $sponsor)
+            {{ $sponsor->name }}
+        @endforeach
     </div>
 @endsection

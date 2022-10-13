@@ -6,6 +6,8 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "cviebrock/eloquent-sluggable": "^9.0",
+        "graham-campbell/markdown": "^14.0",
         "guzzlehttp/guzzle": "^7.5",
         "laravel/framework": "^9.34",
         "laravel/sanctum": "^3.0",
@@ -14,6 +16,7 @@
     },
     "require-dev": {
         "andyabih/laravel-to-uml": "^1.0",
+        "davidbadura/faker-markdown-generator": "^1.1",
         "fakerphp/faker": "^1.20",
         "laravel/pint": "^1.2",
         "laravel/sail": "^1.16",

@@ -15,10 +15,4 @@ Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])
 Route::view('/about-us', 'about-us')->name('about-us');
 Route::view('/by-laws', 'by-laws')->name('by-laws');
 
-Route::group(['prefix' => 'activities'], function () {
-	Route::view('/badminton', 'activities.badminton')->name('activities.badminton');
-	Route::view('/soccer', 'activities.soccer')->name('activities.soccer');
-	Route::view('/handball', 'activities.handball')->name('activities.handball');
-	Route::view('/volley', 'activities.volley')->name('activities.volley');
-	Route::view('/swimming', 'activities.swimming')->name('activities.swimming');
-});
+Route::get('/pages/{page}', [App\Http\Controllers\PageController::class, 'view'])->name('page');

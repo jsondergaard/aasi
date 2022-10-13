@@ -7,6 +7,8 @@
             <li class="nav-item"><a href="{{ route('admin.sponsors.index') }}"
                     class="nav-link link-dark px-2">Sponsorer</a>
             </li>
+            <li class="nav-item"><a href="{{ route('admin.pages.index') }}" class="nav-link link-dark px-2">Sider</a>
+            </li>
         </ul>
         <ul class="nav">
             @guest
