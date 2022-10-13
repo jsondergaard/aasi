@@ -5,12 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
-use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use App\Models\User;
 
 class Page extends Model
 {
-	use HasFactory, Sluggable, SluggableScopeHelpers;
+	use HasFactory, Sluggable;
+
+	protected $fillable = [
+		'name', 'markdown', 'parent_id', 'is_page',
+	];
 
 	/**
 	 * Get the route key for the model.
@@ -21,11 +24,6 @@ class Page extends Model
 	{
 		return 'slug';
 	}
-
-	/**
-	 * @var array
-	 */
-	protected $guarded = ['created_at', 'id'];
 
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -56,14 +54,6 @@ class Page extends Model
 		return route('page', [
 			'page' => $this
 		]);
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getDisplaySelfAttribute(): string
-	{
-		return false;
 	}
 
 	/**

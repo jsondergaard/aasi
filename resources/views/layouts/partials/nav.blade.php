@@ -10,33 +10,27 @@
                             {{ $page->name }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu">
-                            @if ($page->displaySelf)
-                                <li><a class="dropdown-item" href="{{ $page->path }}">{{ $page->name }}</a>
+                            @if ($page->is_page)
+                                <li>
+                                    <a class="dropdown-item" href="{{ $page->path }}">{{ $page->name }}</a>
                                 </li>
                             @endif
                             @foreach ($page->children as $child)
-                                <li><a class="dropdown-item" href="{{ $child->path }}">{{ $child->name }}</a>
+                                <li>
+                                    <a class="dropdown-item" href="{{ $child->path }}">{{ $child->name }}</a>
                                 </li>
                             @endforeach
                         </ul>
                     </li>
-                @else
+                @endif
+
+                @if ($page->parent_id == 0 && !$page->children)
                     <li class="nav-item">
                         <a href="{{ $page->path }}" class="nav-link px-2">{{ $page->name }}</a>
                     </li>
                 @endif
             @endforeach
             <li class="nav-item"><a href="{{ route('sponsors') }}" class="nav-link px-2">Sponsorer</a></li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    Om os
-                </a>
-                <ul class="dropdown-menu dropdown-menu">
-                    <li><a class="dropdown-item" href="{{ route('about-us') }}">Omkring os</a></li>
-                    <li><a class="dropdown-item" href="{{ route('by-laws') }}">Vedtægter</a></li>
-                </ul>
-            </li>
             <li class="nav-item"><a href="{{ route('contact') }}" class="nav-link px-2">Kontakt</a></li>
         </ul>
         <ul class="nav">

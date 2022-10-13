@@ -19,7 +19,7 @@
                         <th scope="row"></th>
                         <td>{{ $page->name }}</td>
                         <td>{{ $page->created_at->diffForHumans() }}</td>
-                        <td><a href="#" class="btn btn-primary">Se mere</a></td>
+                        <td><a href="{{ route('admin.pages.edit', $page->slug) }}" class="btn btn-primary">Rediger</a></td>
                     </tr>
                     @foreach ($page->children as $child)
                         <tr>
@@ -27,7 +27,8 @@
                             <th scope="row">{{ $page->id }}</th>
                             <td>{{ $child->name }}</td>
                             <td>{{ $child->created_at->diffForHumans() }}</td>
-                            <td><a href="#" class="btn btn-primary">Se mere</a></td>
+                            <td><a href="{{ route('admin.pages.edit', $child->slug) }}" class="btn btn-primary">Rediger</a>
+                            </td>
                         </tr>
                     @endforeach
                 @empty
