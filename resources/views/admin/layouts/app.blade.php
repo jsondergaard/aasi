@@ -14,6 +14,8 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
 
+    <!-- Stylesheets -->
+    @stack('stylesheets')
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 
