@@ -14,11 +14,12 @@ class DatabaseSeeder extends Seeder
 	 */
 	public function run()
 	{
-		\App\Models\User::factory()->create([
+		$admin = \App\Models\User::factory()->create([
 			'name' => 'AASI',
 			'email' => 'kontakt@aasi.dk',
-			'admin_at' => now(),
 		]);
+
+		$admin->assignRole('super-admin');
 
 		$departments = \App\Models\Page::factory()->create([
 			'name' => 'Afdelinger',
