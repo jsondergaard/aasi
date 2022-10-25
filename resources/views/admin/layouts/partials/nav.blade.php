@@ -3,11 +3,17 @@
         <ul class="nav me-auto">
             <li class="nav-item"><a href="/" class="nav-link link-dark px-2 active me-4" aria-current="page">AASI</a>
             </li>
-            <li class="nav-item"><a href="{{ route('admin.users.index') }}" class="nav-link link-dark px-2">Brugere</a>
-            <li class="nav-item"><a href="{{ route('admin.sponsors.index') }}"
-                    class="nav-link link-dark px-2">Sponsorer</a>
-            </li>
-            <li class="nav-item"><a href="{{ route('admin.pages.index') }}" class="nav-link link-dark px-2">Sider</a>
+            @can('view users')
+                <li class="nav-item"><a href="{{ route('admin.users.index') }}" class="nav-link link-dark px-2">Brugere</a>
+                @endcan
+                @can('view sponsors')
+                <li class="nav-item"><a href="{{ route('admin.sponsors.index') }}"
+                        class="nav-link link-dark px-2">Sponsorer</a>
+                </li>
+            @endcan
+            @can('view pages')
+                <li class="nav-item"><a href="{{ route('admin.pages.index') }}" class="nav-link link-dark px-2">Sider</a>
+                @endcan
             </li>
         </ul>
         <ul class="nav">

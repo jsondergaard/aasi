@@ -59,11 +59,11 @@
                             Medlemskab
                         </a>
 
-                        @if (auth()->user()->isAdmin)
+                        @can('view dashboard')
                             <a class="dropdown-item" href="{{ route('admin.home') }}">
                                 Administration
                             </a>
-                        @endif
+                        @endcan
 
                         <hr>
 

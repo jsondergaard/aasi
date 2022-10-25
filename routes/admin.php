@@ -3,22 +3,27 @@
 Route::get('/', 'HomeController@home')->name('admin.home');
 
 Route::group(['prefix' => 'sponsors'], function () {
-	Route::get('/', [App\Http\Controllers\Admin\SponsorController::class, 'index'])->name('admin.sponsors.index');
-	Route::get('/create', [App\Http\Controllers\Admin\SponsorController::class, 'create'])->name('admin.sponsors.create');
-	Route::get('/{sponsor}', [App\Http\Controllers\Admin\SponsorController::class, 'view'])->name('admin.sponsors.view');
-	Route::get('/{sponsor}/edit', [App\Http\Controllers\Admin\SponsorController::class, 'edit'])->name('admin.sponsors.edit');
-	Route::delete('/{sponsor}', [App\Http\Controllers\Admin\SponsorController::class, 'destroy'])->name('admin.sponsors.destroy');
+	Route::get('/', [App\Http\Controllers\Admin\SponsorController::class, 'index'])->middleware(['permission:view sponsors'])->name('admin.sponsors.index');
+	Route::get('/create', [App\Http\Controllers\Admin\SponsorController::class, 'create'])->middleware(['permission:create sponsor'])->name('admin.sponsors.create');
+	Route::get('/{sponsor}', [App\Http\Controllers\Admin\SponsorController::class, 'edit'])->middleware(['permission:update sponsor'])->name('admin.sponsors.view');
+	Route::post('/{sponsor}', [App\Http\Controllers\Admin\SponsorController::class, 'store'])->middleware(['permission:update sponsor'])->name('admin.sponsors.edit');
+	Route::delete('/{sponsor}', [App\Http\Controllers\Admin\SponsorController::class, 'destroy'])->middleware(['permission:delete sponsor'])->name('admin.sponsors.destroy');
 });
 
 Route::group(['prefix' => 'pages'], function () {
-	Route::get('/', [App\Http\Controllers\Admin\PageController::class, 'index'])->name('admin.pages.index');
-	Route::get('/create', [App\Http\Controllers\Admin\PageController::class, 'create'])->name('admin.pages.create');
-	Route::post('/create', [App\Http\Controllers\Admin\PageController::class, 'store'])->name('admin.pages.store');
-	Route::get('/{page}', [App\Http\Controllers\Admin\PageController::class, 'edit'])->name('admin.pages.edit');
-	Route::patch('/{page}', [App\Http\Controllers\Admin\PageController::class, 'update'])->name('admin.pages.update');
-	Route::delete('/{page}', [App\Http\Controllers\Admin\PageController::class, 'destroy'])->name('admin.pages.destroy');
+	Route::get('/', [App\Http\Controllers\Admin\PageController::class, 'index'])->middleware(['permission:view pages'])->name('admin.pages.index');
+	Route::get('/create', [App\Http\Controllers\Admin\PageController::class, 'create'])->middleware(['permission:create page'])->name('admin.pages.create');
+	Route::post('/create', [App\Http\Controllers\Admin\PageController::class, 'store'])->middleware(['permission:create page'])->name('admin.pages.store');
+	Route::get('/{page}', [App\Http\Controllers\Admin\PageController::class, 'edit'])->middleware(['permission:update page'])->name('admin.pages.edit');
+	Route::patch('/{page}', [App\Http\Controllers\Admin\PageController::class, 'update'])->middleware(['permission:update page'])->name('admin.pages.update');
+	Route::delete('/{page}', [App\Http\Controllers\Admin\PageController::class, 'destroy'])->middleware(['permission:delete page'])->name('admin.pages.destroy');
 });
 
 Route::group(['prefix' => 'users'], function () {
-	Route::get('/', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('admin.users.index');
+	Route::get('/', [App\Http\Controllers\Admin\UserController::class, 'index'])->middleware(['permission:view users'])->name('admin.users.index');
+	Route::get('/create', [App\Http\Controllers\Admin\UserController::class, 'create'])->middleware(['permission:create user'])->name('admin.users.create');
+	Route::post('/create', [App\Http\Controllers\Admin\UserController::class, 'store'])->middleware(['permission:create user'])->name('admin.users.create');
+	Route::get('/{user}', [App\Http\Controllers\Admin\UserController::class, 'edit'])->middleware(['permission:update user'])->name('admin.users.edit');
+	Route::patch('/{user}', [App\Http\Controllers\Admin\UserController::class, 'update'])->middleware(['permission:update user'])->name('admin.users.update');
+	Route::delete('/{user}', [App\Http\Controllers\Admin\UserController::class, 'destroy'])->middleware(['permission:delete user'])->name('admin.users.destroy');
 });
