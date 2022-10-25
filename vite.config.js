@@ -4,7 +4,7 @@ import {homedir} from 'os'
 import {resolve} from 'path'
 import fs from 'fs'
 
-let host = 'atomizer.test'
+let host = 'aasi.test'
 
 export default defineConfig({
     plugins: [
