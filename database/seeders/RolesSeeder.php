@@ -28,6 +28,10 @@ class RolesSeeder extends Seeder
 			...$cashierPermissions,
 			'update user',
 			'delete user',
+			'view offers',
+			'create offer',
+			'update offer',
+			'delete offer',
 		];
 		$viceChairmanRole->syncPermissions($viceChairmanPermissions);
 
@@ -42,15 +46,6 @@ class RolesSeeder extends Seeder
 		$chairmanRole->syncPermissions($chairmanPermissions);
 
 		$superAdminRole = Role::create(['name' => 'super-admin']);
-		$superAdminPermissions = [
-			...$chairmanPermissions,
-			'update user',
-			'delete user',
-			'view pages',
-			'create page',
-			'update page',
-			'delete page',
-		];
-		$superAdminRole->syncPermissions($superAdminPermissions);
+		$superAdminRole->syncPermissions(\Spatie\Permission\Models\Permission::all());
 	}
 }

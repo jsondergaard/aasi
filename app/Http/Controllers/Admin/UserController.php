@@ -4,11 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\StoreUser;
 
 class UserController extends Controller
 {
 	/**
-	 * Show the application dashboard.
+	 * Show all users.
 	 *
 	 * @return \Illuminate\Contracts\Support\Renderable
 	 */
@@ -44,7 +45,7 @@ class UserController extends Controller
 	}
 
 	/**
-	 * Store the incoming page.
+	 * Store the incoming user.
 	 *
 	 * @param StoreUser $request
 	 * @return Response
@@ -56,5 +57,24 @@ class UserController extends Controller
 		]);
 
 		return redirect(route('admin.users.index'));
+	}
+
+	/**
+	 * Update the user.
+	 *
+	 * @param User $user
+	 * @return Response
+	 */
+	public function update(StoreUser $request, User $user)
+	{
+		$user->update([
+			'name' => $request->name,
+			'email' => $request->email,
+			'gender' => $request->gender,
+		]);
+
+		$user->syncRoles($request->role);
+
+		return redirect(route('admin.users.edit', $user));
 	}
 }

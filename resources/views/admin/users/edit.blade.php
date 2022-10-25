@@ -59,6 +59,23 @@
 
                 <div class="col-md-3">
                     <div class="form-group">
+                        <label for="role">Rolle</label>
+
+                        <select name="role" class="form-control">
+                            <option value="0">Ingen</option>
+                            @foreach (\Spatie\Permission\Models\Role::all() as $role)
+                                <option value="{{ $role->name }}"
+                                    @if ($user->roles->count() > 0) @if (old('role', $user->roles->first()->name) == $role->name) selected @endif
+                                    @endif>
+                                    {{ $role->name }}</option>
+                            @endforeach
+                        </select>
+
+                        @if ($errors->has('role'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('role') }}</strong>
+                            </span>
+                        @endif
                     </div>
                 </div>
             </div>

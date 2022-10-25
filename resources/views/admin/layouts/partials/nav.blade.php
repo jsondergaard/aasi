@@ -14,6 +14,9 @@
             @can('view pages')
                 <li class="nav-item"><a href="{{ route('admin.pages.index') }}" class="nav-link link-dark px-2">Sider</a>
                 @endcan
+                @can('view roles')
+                <li class="nav-item"><a href="{{ route('admin.roles.index') }}" class="nav-link link-dark px-2">Roller</a>
+                @endcan
             </li>
         </ul>
         <ul class="nav">

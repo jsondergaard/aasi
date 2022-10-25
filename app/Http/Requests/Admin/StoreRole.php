@@ -5,7 +5,7 @@ namespace App\Http\Requests\Admin;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class StorePage extends FormRequest
+class StoreRole extends FormRequest
 {
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -14,7 +14,7 @@ class StorePage extends FormRequest
 	 */
 	public function authorize()
 	{
-		return auth()->user()->hasPermissionTo('create page') || auth()->user()->hasPermissionTo('update page');
+		return auth()->user()->hasPermissionTo('create role') || auth()->user()->hasPermissionTo('update role');
 	}
 
 	/**
@@ -27,11 +27,8 @@ class StorePage extends FormRequest
 		return [
 			'name' => [
 				'required',
-				Rule::unique('pages')->ignore($this->route('page'))
+				Rule::unique('roles')->ignore($this->route('role'))
 			],
-			'markdown' => 'required',
-			'parent_id' => 'numeric',
-			'is_page' => '',
 		];
 	}
 }

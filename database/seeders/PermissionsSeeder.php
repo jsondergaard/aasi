@@ -33,6 +33,10 @@ class PermissionsSeeder extends Seeder
 			'create offer',
 			'update offer',
 			'delete offer',
+			'view roles',
+			'create role',
+			'update role',
+			'delete role',
 		];
 
 		foreach ($permissions as $permission) {
