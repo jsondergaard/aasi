@@ -3,12 +3,22 @@
 @section('main')
     <div class="container mt-4">
         <div class="row justify-content-center">
+            <div class="col-lg-4 col-sm-12">
+                <div class="card">
+                    <div class="card-header">Medlemskab</div>
+
+                    <div class="card-body">
+                        Du er ikke medlem din bums
+                    </div>
+                </div>
+            </div>
+
             <div class="col-lg-8 col-sm-12">
                 <div class="card">
                     <div class="card-header">Indstillinger</div>
 
                     <div class="card-body">
-                        <form action="{{ route('users.settings.update') }}" method="POST">
+                        <form action="{{ route('settings.update') }}" method="POST">
                             @csrf
                             @method('PATCH')
 

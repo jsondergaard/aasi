@@ -51,12 +51,8 @@
 
                         <hr>
 
-                        <a class="dropdown-item" href="{{ route('users.settings') }}">
+                        <a class="dropdown-item" href="{{ route('settings') }}">
                             Indstillinger
-                        </a>
-
-                        <a class="dropdown-item" href="{{ route('users.subscription') }}">
-                            Medlemskab
                         </a>
 
                         @can('view dashboard')

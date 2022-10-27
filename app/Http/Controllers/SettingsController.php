@@ -26,6 +26,6 @@ class SettingsController extends Controller
 			'password' => $request->get('password') ? Hash::make($request->get('password')) : auth()->user()->password,
 		]);
 
-		return redirect(route('users.settings'));
+		return redirect(route('settings'));
 	}
 }
