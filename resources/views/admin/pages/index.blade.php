@@ -19,10 +19,7 @@
                     <th scope="col">Forældre ID</th>
                     <th scope="col">Side</th>
                     <th scope="col">Oprettet</th>
-                    @can('update page')
-                        <th scope="col"></th>
-                    @endcan
-                    @can('delete page')
+                    @can('update page' || 'delete page')
                         <th scope="col"></th>
                     @endcan
                 </tr>
@@ -34,23 +31,26 @@
                         <th scope="row"></th>
                         <td>{{ $page->name }}</td>
                         <td>{{ $page->created_at->diffForHumans() }}</td>
-                        @can('update page')
-                            <td><a href="{{ route('admin.pages.edit', $page->slug) }}" class="btn btn-primary">Rediger</a></td>
-                        @endcan
-                        @can('delete page')
-                            <td>
-                                @if ($page->children->count() > 0)
-                                    <span class="small text-muted">Slet børn først.</span>
-                                @else
-                                    <form action="{{ route('admin.pages.destroy', $page->slug) }}" method="POST"
-                                        onSubmit="return confirm('Er du sikker på du vil slette siden?')">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Slet</button>
-                                    </form>
-                                @endif
-                            </td>
-                        @endcan
+                        <td>
+                            <div class="d-flex justify-content-end">
+                                @can('update page')
+                                    <a href="{{ route('admin.pages.edit', $page->slug) }}"
+                                        class="btn btn-primary me-2">Rediger</a>
+                                @endcan
+                                @can('delete page')
+                                    @if ($page->children->count() > 0)
+                                        <button class="btn btn-outline-danger">Slet</button>
+                                    @else
+                                        <form action="{{ route('admin.pages.destroy', $page->slug) }}" method="POST"
+                                            onSubmit="return confirm('Er du sikker på du vil slette siden?')">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Slet</button>
+                                        </form>
+                                    @endif
+                                @endcan
+                            </div>
+                        </td>
                     </tr>
                     @foreach ($page->children as $child)
                         <tr>
@@ -58,19 +58,21 @@
                             <th scope="row">{{ $page->id }}</th>
                             <td>{{ $child->name }}</td>
                             <td>{{ $child->created_at->diffForHumans() }}</td>
-                            @can('update page')
-                                <td><a href="{{ route('admin.pages.edit', $child->slug) }}" class="btn btn-primary">Rediger</a>
-                                @endcan
-                                @can('delete page')
-                                <td>
-                                    <form action="{{ route('admin.pages.destroy', $child->slug) }}" method="POST"
-                                        onSubmit="return confirm('Er du sikker på du vil slette siden?')">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Slet</button>
-                                    </form>
-                                </td>
-                            @endcan
+                            <td>
+                                <div class="d-flex justify-content-end">
+                                    @can('update page')
+                                        <a href="{{ route('admin.pages.edit', $child->slug) }}"
+                                            class="btn btn-primary me-2">Rediger</a>
+                                    @endcan
+                                    @can('delete page')
+                                        <form action="{{ route('admin.pages.destroy', $child->slug) }}" method="POST"
+                                            onSubmit="return confirm('Er du sikker på du vil slette siden?')">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Slet</button>
+                                        </form>
+                                    @endcan
+                                </div>
                             </td>
                         </tr>
                     @endforeach

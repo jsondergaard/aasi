@@ -12,18 +12,12 @@
                 </div>
             @endcan
         </div>
-        <table class="table table-borderless">
+        <table class="table table-borderless align-middle">
             <thead>
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                    @can('update user')
-                        <th scope="col"></th>
-                    @endcan
-                    @can('delete user')
+                    <th scope="col">Navn</th>
+                    @can('update role' || 'delete role')
                         <th scope="col"></th>
                     @endcan
                 </tr>
@@ -33,23 +27,25 @@
                     <tr>
                         <th scope="row">{{ $role->id }}</th>
                         <th scope="row">{{ $role->name }}</th>
-                        @can('update role')
-                            <td><a href="{{ route('admin.roles.edit', $role) }}" class="btn btn-primary">Rediger</a>
-                            @endcan
-                            @can('delete role')
-                            <td>
-                                <form action="{{ route('admin.roles.destroy', $role) }}" method="POST"
-                                    onSubmit="return confirm('Er du sikker på du vil slette rollen?')">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Slet</button>
-                                </form>
-                            </td>
-                        @endcan
+                        <th scope="row">
+                            <div class="d-flex justify-content-end">
+                                @can('update role')
+                                    <a href="{{ route('admin.roles.edit', $role) }}" class="btn btn-primary me-2">Rediger</a>
+                                @endcan
+                                @can('delete role')
+                                    <form action="{{ route('admin.roles.destroy', $role) }}" method="POST"
+                                        onSubmit="return confirm('Er du sikker på du vil slette rollen?')">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Slet</button>
+                                    </form>
+                                @endcan
+                            </div>
+                        </th>
                     </tr>
                 @empty
                     <tr>
-                        <th scope="row">Ingen brugere her!</th>
+                        <th scope="row">Ingen roller her!</th>
                     </tr>
                 @endforelse
             </tbody>

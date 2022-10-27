@@ -16,14 +16,11 @@
             <thead>
                 <tr>
                     <th scope="col">ID</th>
+                    <th scope="col">Navn</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Oprettet</th>
                     <th scope="col"></th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                    @can('update user')
-                        <th scope="col"></th>
-                    @endcan
-                    @can('delete user')
+                    @can('update user' || 'delete user')
                         <th scope="col"></th>
                     @endcan
                 </tr>
@@ -32,22 +29,24 @@
                 @forelse ($users as $user)
                     <tr>
                         <th scope="row">{{ $user->id }}</th>
-                        <th scope="row">{{ $user->name }}</th>
-                        <th scope="row">{{ $user->email }}</th>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->email }}</td>
                         <td>{{ $user->created_at->diffForHumans() }}</td>
-                        @can('update user')
-                            <td><a href="{{ route('admin.users.edit', $user) }}" class="btn btn-primary">Rediger</a>
-                            @endcan
-                            @can('delete user')
-                            <td>
-                                <form action="{{ route('admin.users.destroy', $user) }}" method="POST"
-                                    onSubmit="return confirm('Er du sikker på du vil slette brugeren?')">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Slet</button>
-                                </form>
-                            </td>
-                        @endcan
+                        <td>
+                            <div class="d-flex justify-content-end">
+                                @can('update user')
+                                    <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-primary me-2">Rediger</a>
+                                @endcan
+                                @can('delete user')
+                                    <form action="{{ route('admin.users.destroy', $user) }}" method="POST"
+                                        onSubmit="return confirm('Er du sikker på du vil slette brugeren?')">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Slet</button>
+                                    </form>
+                                @endcan
+                            </div>
+                        </td>
                     </tr>
                 @empty
                     <tr>

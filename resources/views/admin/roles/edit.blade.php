@@ -13,7 +13,7 @@
             <div class="row mb-3">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="name">Name</label>
+                        <label for="name">Navn</label>
                         <input type="text" name="name" class="form-control" value="{{ old('name', $role->name) }}"
                             required autofocus>
 
@@ -29,15 +29,11 @@
             <div class="row mb-3">
                 @foreach (\Spatie\Permission\Models\Permission::all() as $permission)
                     <div class="col-md-3 mt-3">
-                        <div class="form-group">
-                            <div class="form-check">
-                                <input class="form-check-input" name="permissions[{{ $permission->name }}]" type="checkbox"
-                                    id="{{ $permission->name }}" @if ($role->hasPermissionTo($permission->name)) checked @endif>
-                                <label class="form-check-label" for="{{ $permission->name }}">
-                                    {{ $permission->name }}
-                                </label>
-                            </div>
-                        </div>
+                        <input class="btn-check form-check-input" name="permissions[{{ $permission->name }}]"
+                            type="checkbox" id="{{ $permission->name }}" @if ($role->hasPermissionTo($permission->name)) checked @endif>
+                        <label class="btn btn-outline-success" for="{{ $permission->name }}">
+                            {{ ucwords($permission->name) }}
+                        </label>
                     </div>
                 @endforeach
             </div>
