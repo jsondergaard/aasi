@@ -31,12 +31,6 @@
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarUserDropdown">
-                        <a class="dropdown-item" href="{{ auth()->user()->path }}">
-                            Min profil
-                        </a>
-
-                        <hr>
-
                         <a class="dropdown-item" href="{{ route('settings') }}">
                             Indstillinger
                         </a>
