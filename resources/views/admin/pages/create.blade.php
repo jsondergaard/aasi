@@ -47,9 +47,12 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="is_page">Vis i dropdown</label>
-                        <p class="text-muted">
-                            <small>N/A når ingen børn.</small>
-                        </p>
+                        <div class="form-check">
+                            <input class="form-check-input" name="is_page" type="checkbox" id="flexCheckChecked" disabled>
+                            <label class="form-check-label" for="flexCheckChecked">
+                                Vis i dropdown
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>

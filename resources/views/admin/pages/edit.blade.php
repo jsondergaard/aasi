@@ -40,7 +40,7 @@
                             </select>
                         @else
                             <p class="text-muted">
-                                <small>Kan ikke være barn til nogle sider da den selv er forældre.</small>
+                                <input class="form-control" value="Er selv forældre" readonly>
                             </p>
                         @endif
 
@@ -70,9 +70,13 @@
                                 </span>
                             @endif
                         @else
-                            <p class="text-muted">
-                                <small>N/A når ingen børn.</small>
-                            </p>
+                            <div class="form-check">
+                                <input class="form-check-input" name="is_page" type="checkbox" id="flexCheckChecked"
+                                    disabled>
+                                <label class="form-check-label" for="flexCheckChecked">
+                                    Vis i dropdown
+                                </label>
+                            </div>
                         @endif
                     </div>
                 </div>
