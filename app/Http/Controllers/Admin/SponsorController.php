@@ -55,7 +55,7 @@ class SponsorController extends Controller
 		]);
 	}
 
-	public function update(StoreSponsor $sponsor)
+	public function update(Sponsor $sponsor, StoreSponsor $request)
 	{
 		$sponsor->update([
 			'name' => $request->name,

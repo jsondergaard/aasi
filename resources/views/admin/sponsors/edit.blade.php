@@ -16,7 +16,7 @@
 
             <div class="col-6 mb-3">
                 <label for="name" class="form-label">Navn</label>
-                <input class="form-control @error('name') is-invalid @enderror" type="text" id="name"
+                <input name="name" class="form-control @error('name') is-invalid @enderror" type="text" id="name"
                     value="{{ old('name', $sponsor->name) }}">
             </div>
             <div class="col-6 mb-3">
