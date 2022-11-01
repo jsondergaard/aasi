@@ -55,14 +55,14 @@ class SponsorController extends Controller
 		]);
 	}
 
-	public function update(Sponsor $sponsor)
+	public function update(StoreSponsor $sponsor)
 	{
 		$sponsor->update([
 			'name' => $request->name,
 			'description' => $request->description
 		]);
 
-		return redirect(route('admin.sponsors', $sponsor));
+		return redirect(route('admin.sponsors.index'));
 	}
 
 	public function store(StoreSponsor $request)
@@ -71,7 +71,7 @@ class SponsorController extends Controller
 			'name' => $request->name,
 			'description' => $request->description,
 		]);
-		
+
 		return redirect(route('admin.sponsors.index'));
 	}
 }
