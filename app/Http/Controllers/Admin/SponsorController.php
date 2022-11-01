@@ -47,10 +47,20 @@ class SponsorController extends Controller
 		return view('admin.sponsors.create');
 	}
 
-	public function edit()
+	public function edit(Sponsor $sponsor)
 	{
 		return view('admin.sponsors.edit', [
 			'sponsor' => $sponsor,
 		]);
+	}
+
+	public function update(Sponsor $sponsor)
+	{
+		$sponsor->update([
+			'name' => $request->name,
+			'description' => $request->description
+		]);
+
+		return redirect(route('admin.sponsors', $sponsor));
 	}
 }
