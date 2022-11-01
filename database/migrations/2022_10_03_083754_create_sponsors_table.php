@@ -16,11 +16,8 @@ return new class extends Migration
 		Schema::create('sponsors', function (Blueprint $table) {
 			$table->id();
 			$table->string('name');
-			$table->text('description');
-			$table->unsignedBigInteger('manager_id');
+			$table->text('description')->nullable();
 			$table->timestamps();
-
-			$table->foreign('manager_id')->references('id')->on('users');
 		});
 	}
 
