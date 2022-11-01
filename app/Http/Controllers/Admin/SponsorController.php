@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Sponsor;
 use Illuminate\Http\Request;
+use App\Http\Requests\Admin\StoreSponsor;
 use App\Http\Controllers\Controller;
 
 class SponsorController extends Controller
@@ -52,5 +53,13 @@ class SponsorController extends Controller
 		return view('admin.sponsors.edit', [
 			'sponsor' => $sponsor,
 		]);
+	}
+	public function store(StoreSponsor $request)
+	{
+		Sponsor::create([
+			'name' => $request->name,
+			'description' => $request->description,
+		]);
+		return redirect(route('admin.sponsors.index'));
 	}
 }
