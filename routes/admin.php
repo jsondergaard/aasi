@@ -5,6 +5,7 @@ Route::get('/', 'HomeController@home')->name('admin.home');
 Route::group(['prefix' => 'sponsors'], function () {
 	Route::get('/', [App\Http\Controllers\Admin\SponsorController::class, 'index'])->middleware(['permission:view sponsors'])->name('admin.sponsors.index');
 	Route::get('/create', [App\Http\Controllers\Admin\SponsorController::class, 'create'])->middleware(['permission:create sponsor'])->name('admin.sponsors.create');
+	Route::post('/create', [App\Http\Controllers\Admin\SponsorController::class, 'store'])->middleware(['permission:create sponsor'])->name('admin.sponsors.store');
 	Route::get('/{sponsor}', [App\Http\Controllers\Admin\SponsorController::class, 'edit'])->middleware(['permission:update sponsor'])->name('admin.sponsors.view');
 	Route::post('/{sponsor}', [App\Http\Controllers\Admin\SponsorController::class, 'update'])->middleware(['permission:update sponsor'])->name('admin.sponsors.update');
 	Route::delete('/{sponsor}', [App\Http\Controllers\Admin\SponsorController::class, 'destroy'])->middleware(['permission:delete sponsor'])->name('admin.sponsors.destroy');
