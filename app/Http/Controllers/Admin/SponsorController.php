@@ -64,13 +64,14 @@ class SponsorController extends Controller
 
 		return redirect(route('admin.sponsors', $sponsor));
 	}
-	
+
 	public function store(StoreSponsor $request)
 	{
 		Sponsor::create([
 			'name' => $request->name,
 			'description' => $request->description,
 		]);
+		
 		return redirect(route('admin.sponsors.index'));
 	}
 }
