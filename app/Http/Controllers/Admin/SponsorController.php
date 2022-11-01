@@ -54,7 +54,6 @@ class SponsorController extends Controller
 			'sponsor' => $sponsor,
 		]);
 	}
-<<<<<<< HEAD
 
 	public function update(Sponsor $sponsor)
 	{
@@ -64,7 +63,8 @@ class SponsorController extends Controller
 		]);
 
 		return redirect(route('admin.sponsors', $sponsor));
-=======
+	}
+	
 	public function store(StoreSponsor $request)
 	{
 		Sponsor::create([
@@ -72,6 +72,5 @@ class SponsorController extends Controller
 			'description' => $request->description,
 		]);
 		return redirect(route('admin.sponsors.index'));
->>>>>>> 714590a17c62729a37be11aedb4944bd070c868f
 	}
 }
