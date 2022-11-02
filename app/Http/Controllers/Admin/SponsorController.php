@@ -48,18 +48,30 @@ class SponsorController extends Controller
 		return view('admin.sponsors.create');
 	}
 
-	public function edit()
+	public function edit(Sponsor $sponsor)
 	{
 		return view('admin.sponsors.edit', [
 			'sponsor' => $sponsor,
 		]);
 	}
+
+	public function update(Sponsor $sponsor, StoreSponsor $request)
+	{
+		$sponsor->update([
+			'name' => $request->name,
+			'description' => $request->description
+		]);
+
+		return redirect(route('admin.sponsors.index'));
+	}
+
 	public function store(StoreSponsor $request)
 	{
 		Sponsor::create([
 			'name' => $request->name,
 			'description' => $request->description,
 		]);
+
 		return redirect(route('admin.sponsors.index'));
 	}
 }

@@ -27,8 +27,7 @@
                         <th scope="row">{{ $sponsor->id }}</th>
                         <td>{{ $sponsor->name }}</td>
                         <td>{{ $sponsor->created_at->diffForHumans() }}</td>
-                        <td><a href="{{ route('admin.sponsors.view', $sponsor) }}" class="btn btn-outline-secondary">Se
-                                mere</a></td>
+                        <td><a href="{{ route('admin.sponsors.update', $sponsor) }}" class="btn btn-outline-secondary">Rediger</a></td>
                     </tr>
                 @empty
                     <tr>
