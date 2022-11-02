@@ -20,7 +20,6 @@ class SponsorFactory extends Factory
 		return [
 			'name' => fake()->company(),
 			'description' => fake()->catchPhrase(),
-			'manager_id' => User::firstOrFail()->id,
 		];
 	}
 }
