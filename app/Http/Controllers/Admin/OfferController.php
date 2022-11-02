@@ -30,12 +30,14 @@ class OfferController extends Controller
 			'offers' => Sponsor::all(),
 		]);
 	}
+
 	public function view(Offer $request)
 	{
 		return view('admin.sponsors.offers.create', [
 			'offers' => $offers,
 		]);
 	}
+
 	public function create()
 	{
 		return view('admin.sponsors.offers.create');
