@@ -5,7 +5,7 @@
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 class="h2">Opret Kupon</h1>
         </div>
-        <form action="{{ route('admin.sponsors.store') }}" method="POST">
+        <form action="{{ route('admin.sponsors.offers.store', $sponsor) }}" method="POST">
             @csrf
 
             <div class="row mb-3">
