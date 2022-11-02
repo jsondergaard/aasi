@@ -28,6 +28,7 @@
                         <td>{{ $sponsor->name }}</td>
                         <td>{{ $sponsor->created_at->diffForHumans() }}</td>
                         <td><a href="{{ route('admin.sponsors.update', $sponsor) }}" class="btn btn-outline-secondary">Rediger</a></td>
+                        <td><a href="{{ route('admin.sponsors.offers.create', $sponsor) }}" class="btn btn-outline-success">Tilføj kupon</a></td>
                     </tr>
                 @empty
                     <tr>
