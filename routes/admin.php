@@ -9,6 +9,11 @@ Route::group(['prefix' => 'sponsors'], function () {
 	Route::get('/{sponsor}', [App\Http\Controllers\Admin\SponsorController::class, 'edit'])->middleware(['permission:update sponsor'])->name('admin.sponsors.view');
 	Route::patch('/{sponsor}', [App\Http\Controllers\Admin\SponsorController::class, 'update'])->middleware(['permission:update sponsor'])->name('admin.sponsors.update');
 	Route::delete('/{sponsor}', [App\Http\Controllers\Admin\SponsorController::class, 'destroy'])->middleware(['permission:delete sponsor'])->name('admin.sponsors.destroy');
+	Route::group(['prefix' => '/{sponsor}/offers'], function () {
+		Route::get('/create', [App\Http\Controllers\Admin\OfferController::class, 'create'])->middleware(['permission:create offer'])->name('admin.sponsors.offers.create');
+		Route::post('/create', [App\Http\Controllers\Admin\OfferController::class, 'create'])->middleware(['permission:create offer'])->name('admin.sponsors.offers.store');
+		
+	});
 });
 
 Route::group(['prefix' => 'pages'], function () {
