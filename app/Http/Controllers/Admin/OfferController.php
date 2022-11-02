@@ -35,12 +35,16 @@ class OfferController extends Controller
 			'offers' => $offers,
 		]);
 	}
-	public function store(StoreOffer $request)
+	public function create(){
+		return view('admin.sponsors.offers.create');
+	}
+
+	public function store(Sponsor $sponsor,StoreOffer $request)
 	{
 		Offer::create([
 			'name' => $request->name,
 			'description' => $request->description,
-			'sponsor_id' => $request->sponsor_id,
+			'sponsor_id' => $sponsor->id,
 		]);
 		return redirect(route('admin.sponsors.index'));
 	}
