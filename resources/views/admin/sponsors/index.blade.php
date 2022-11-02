@@ -18,7 +18,9 @@
                     <th scope="col">#</th>
                     <th scope="col">Sponsor</th>
                     <th scope="col">Oprettet</th>
-                    <th scope="col"></th>
+                    @can('update sponsor' || 'delete sponsor')
+                        <th scope="col"></th>
+                    @endcan
                 </tr>
             </thead>
             <tbody>
@@ -27,8 +29,22 @@
                         <th scope="row">{{ $sponsor->id }}</th>
                         <td>{{ $sponsor->name }}</td>
                         <td>{{ $sponsor->created_at->diffForHumans() }}</td>
-                        <td><a href="{{ route('admin.sponsors.update', $sponsor) }}" class="btn btn-outline-secondary">Rediger</a></td>
-                        <td><a href="{{ route('admin.sponsors.offers.create', $sponsor) }}" class="btn btn-outline-success">Tilføj kupon</a></td>
+                        <td>
+                            <div class="d-flex justify-content-end">
+                                @can('update sponsor')
+                                    <a href="{{ route('admin.sponsors.update', $sponsor) }}"
+                                        class="btn btn-primary me-2">Rediger</a>
+                                @endcan
+                                @can('delete sponsor')
+                                    <form action="{{ route('admin.sponsors.destroy', $sponsor) }}" method="POST"
+                                        onSubmit="return confirm('Er du sikker på du vil slette sponsoren?')">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Slet</button>
+                                    </form>
+                                @endcan
+                            </div>
+                        </td>
                     </tr>
                 @empty
                     <tr>

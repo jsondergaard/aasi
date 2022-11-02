@@ -13,8 +13,8 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" name="name" class="form-control" value="{{ old('name') }}" required
-                            autofocus>
+                        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
+                            value="{{ old('name') }}" required autofocus>
 
                         @if ($errors->has('name'))
                             <span class="invalid-feedback" role="alert">
@@ -27,7 +27,7 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="parent_id">Forældre side</label>
-                        <select name="parent_id" class="form-control">
+                        <select name="parent_id" class="form-control @error('parent_id') is-invalid @enderror">
                             <option value="0">Ingen</option>
                             @foreach ($availablePages as $availablePage)
                                 <option value="{{ $availablePage->id }}" @if (old('parent_id') == $availablePage->id) selected @endif
