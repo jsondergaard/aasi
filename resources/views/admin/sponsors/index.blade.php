@@ -40,9 +40,17 @@
                                         onSubmit="return confirm('Er du sikker på du vil slette sponsoren?')">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Slet</button>
+                                        <button type="submit" class="btn btn-danger me-2">Slet</button>
                                     </form>
                                 @endcan
+                                @can('create offer')
+                                    <form action="{{ route('admin.sponsors.offers.create', $sponsor) }}" method="GET">
+                                    @csrf
+                                    @method('CREATE')
+                                    <button type="submit" class="btn btn-success">Opret kupon</button>
+                                  </form>
+                                @endcan
+                                    
                             </div>
                         </td>
                     </tr>
