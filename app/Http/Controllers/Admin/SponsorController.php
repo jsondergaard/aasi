@@ -40,7 +40,9 @@ class SponsorController extends Controller
 
 	public function destroy(Sponsor $sponsor)
 	{
-		return null;
+		$sponsor->delete();
+
+		return redirect(route('admin.sponsors.index'));
 	}
 
 	public function create()
