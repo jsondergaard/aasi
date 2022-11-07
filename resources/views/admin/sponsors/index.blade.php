@@ -65,11 +65,11 @@
                         <td>
                             <div class="d-flex justify-content-end">
                                 @can('update page')
-                                    <a href="{{ route('admin.pages.edit', $offer->slug) }}"
+                                    <a href="{{ route('admin.sponsors.view', $sponsor) }}"
                                         class="btn btn-primary me-2">Rediger</a>
                                 @endcan
                                 @can('delete page')
-                                    <form action="{{ route('admin.pages.destroy', $offer->slug) }}" method="POST"
+                                    <form action="{{ route('admin.sponsors.destroy', $sponsor) }}" method="POST"
                                         onSubmit="return confirm('Er du sikker på du vil slette siden?')">
                                         @csrf
                                         @method('DELETE')
