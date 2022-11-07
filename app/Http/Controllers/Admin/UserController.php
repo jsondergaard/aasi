@@ -54,7 +54,13 @@ class UserController extends Controller
 	{
 		User::create([
 			'name' => $request->name,
+			'email' => $request->email,
+			'gender' => $request->gender,
 		]);
+
+		if ($request->department_id) {
+			auth()->user()->department()->sync($request->department_id);
+		}
 
 		return redirect(route('admin.users.index'));
 	}

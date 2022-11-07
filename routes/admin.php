@@ -28,7 +28,7 @@ Route::group(['prefix' => 'pages'], function () {
 Route::group(['prefix' => 'users'], function () {
 	Route::get('/', [App\Http\Controllers\Admin\UserController::class, 'index'])->middleware(['permission:view users'])->name('admin.users.index');
 	Route::get('/create', [App\Http\Controllers\Admin\UserController::class, 'create'])->middleware(['permission:create user'])->name('admin.users.create');
-	Route::post('/create', [App\Http\Controllers\Admin\UserController::class, 'store'])->middleware(['permission:create user'])->name('admin.users.create');
+	Route::post('/create', [App\Http\Controllers\Admin\UserController::class, 'store'])->middleware(['permission:create user'])->name('admin.users.store');
 	Route::get('/{user}', [App\Http\Controllers\Admin\UserController::class, 'edit'])->middleware(['permission:update user'])->name('admin.users.edit');
 	Route::patch('/{user}', [App\Http\Controllers\Admin\UserController::class, 'update'])->middleware(['permission:update user'])->name('admin.users.update');
 	Route::delete('/{user}', [App\Http\Controllers\Admin\UserController::class, 'destroy'])->middleware(['permission:delete user'])->name('admin.users.destroy');
