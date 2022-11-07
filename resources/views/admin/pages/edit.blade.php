@@ -2,6 +2,25 @@
 
 @section('main')
     <div class="container mt-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Rediger side</h1>
+            <div class="mb-2 mb-md-0">
+                <div class="btn-group me-2">
+                    @can('delete page')
+                        @if ($page->children->count() > 0)
+                            <button class="btn btn-outline-danger">Slet</button>
+                        @else
+                            <form action="{{ route('admin.pages.destroy', $page->slug) }}" method="POST"
+                                onSubmit="return confirm('Er du sikker på du vil slette siden?')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Slet</button>
+                            </form>
+                        @endif
+                    @endcan
+                </div>
+            </div>
+        </div>
         <form action="{{ route('admin.pages.update', $page) }}" method="POST">
             @csrf
             @method('PATCH')
@@ -13,7 +32,7 @@
             <div class="row mb-3">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="name">Name</label>
+                        <label for="name">Navn</label>
                         <input type="text" name="name" class="form-control" value="{{ old('name', $page->name) }}"
                             required autofocus>
 
