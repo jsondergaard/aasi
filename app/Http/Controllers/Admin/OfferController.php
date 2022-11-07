@@ -37,10 +37,12 @@ class OfferController extends Controller
 			'offers' => $offers,
 		]);
 	}
-
-	public function create()
-	{
-		return view('admin.sponsors.offers.create');
+  
+	public function create(Sponsor $sponsor)
+  {
+		return view('admin.sponsors.offers.create', [
+			'sponsor' => $sponsor,
+		]);
 	}
 
 	public function store(Sponsor $sponsor, StoreOffer $request)
