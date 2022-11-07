@@ -5,7 +5,7 @@ namespace App\Http\Requests\Admin;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class StoreSponsor extends FormRequest
+class StoreOffer extends FormRequest
 {
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -29,7 +29,7 @@ class StoreSponsor extends FormRequest
 				'required',
 				Rule::unique('offers')->ignore($this->route('offer'))
 			],
+			'description' => 'required',
 		];
 	}
 }
-

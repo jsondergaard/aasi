@@ -52,14 +52,15 @@ class UserController extends Controller
 	 */
 	public function store(StoreUser $request)
 	{
-		User::create([
+		$user = User::create([
 			'name' => $request->name,
 			'email' => $request->email,
 			'gender' => $request->gender,
+			'password' => 'null',
 		]);
 
-		if ($request->department_id) {
-			auth()->user()->department()->sync($request->department_id);
+		foreach ($request->departments as $department) {
+			$user->departments()->toggle($department);
 		}
 
 		return redirect(route('admin.users.index'));

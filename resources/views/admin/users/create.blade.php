@@ -55,22 +55,38 @@
                 </div>
             </div>
 
+
+            <div class="col-4">
+                <label for="categories">Category</label>
+                <select name="categories[]" class="form-control" multiple>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}" @if (is_array(old('categories')) && in_array($category->id, old('categories'))) selected @endif>
+                            {{ $category->name }}</option>
+                    @endforeach
+                </select>
+
+                @if ($errors->has('categories'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('categories') }}</strong>
+                    </span>
+                @endif
+            </div>
+
             <div class="row mb-3">
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label for="department">Tilknytning</label>
-                        <select name="department_id" class="form-control">
-                            <option value="0">Ingen</option>
+                        <label for="departments">Tilknytning</label>
+                        <select name="departments[]" class="form-control">
+                            <option>Ingen</option>
                             @foreach (\App\Models\Department::all() as $depmartent)
-                                <option value="{{ $department->id }}" @if (old('department') == $department->id) selected @endif
-                                    @if ($department->parent_id != null) disabled @endif>
+                                <option value="{{ $department->id }}" @if (is_array(old('departments')) && in_array($department->id, old('departments'))) selected @endif>
                                     {{ $department->name }}</option>
                             @endforeach
                         </select>
 
-                        @if ($errors->has('department_id'))
+                        @if ($errors->has('departments'))
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('department_id') }}</strong>
+                                <strong>{{ $errors->first('departments') }}</strong>
                             </span>
                         @endif
                     </div>

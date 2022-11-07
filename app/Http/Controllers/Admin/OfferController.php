@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Sponsor;
 use App\Models\Offer;
-use Illuminate\Http\Request;
+use App\Http\Requests\Admin\StoreOffer;
 use App\Http\Controllers\Controller;
 
 class OfferController extends Controller
@@ -37,9 +37,9 @@ class OfferController extends Controller
 			'offers' => $offers,
 		]);
 	}
-  
+
 	public function create(Sponsor $sponsor)
-  {
+	{
 		return view('admin.sponsors.offers.create', [
 			'sponsor' => $sponsor,
 		]);
@@ -52,6 +52,7 @@ class OfferController extends Controller
 			'description' => $request->description,
 			'sponsor_id' => $sponsor->id,
 		]);
+
 		return redirect(route('admin.sponsors.index'));
 	}
 }
