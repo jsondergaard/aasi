@@ -45,6 +45,10 @@
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarUserDropdown">
+                        <a class="dropdown-item" href="{{ route('offers.index') }}">
+                            Kuponer
+                        </a>
+                        <hr>
                         <a class="dropdown-item" href="{{ route('settings') }}">
                             Indstillinger
                         </a>
