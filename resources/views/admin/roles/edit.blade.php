@@ -2,6 +2,21 @@
 
 @section('main')
     <div class="container mt-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Rediger rolle</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+                <div class="btn-group me-2">
+                    @can('delete role')
+                        <form action="{{ route('admin.roles.destroy', $role) }}" method="POST"
+                            onSubmit="return confirm('Er du sikker på du vil slette rollen?')">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Slet</button>
+                        </form>
+                    @endcan
+                </div>
+            </div>
+        </div>
         <form action="{{ route('admin.roles.update', $role) }}" method="POST">
             @csrf
             @method('PATCH')
