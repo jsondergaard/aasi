@@ -27,7 +27,7 @@ class OfferController extends Controller
 	public function index()
 	{
 		return view('sponsors', [
-			'offers' => Sponsor::all(),
+			'offers' => Offer::all(),
 		]);
 	}
 

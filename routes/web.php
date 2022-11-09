@@ -10,7 +10,7 @@ Route::patch('/settings', [App\Http\Controllers\SettingsController::class, 'upda
 
 Route::group(['prefix' => 'offers'], function () {
 	Route::get('/', [App\Http\Controllers\OfferController::class, 'index'])->name('offers.index');
-	Route::get('/show', [App\Http\Controllers\OfferController::class, 'show'])->name('offers.show');
+	Route::get('/{offer}', [App\Http\Controllers\OfferController::class, 'view'])->name('offers.view');
 });
 
 Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact');
