@@ -23,9 +23,11 @@
 
     @yield('main')
 
+    <!-- Dette er til sponsor carousel
     <div class="row">
         <x-sponsor :sponsors="\App\Models\Sponsor::all()" />
     </div>
+    -->
 
     @include('layouts.partials.footer')
 
