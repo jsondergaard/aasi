@@ -15,7 +15,7 @@ class HomeController extends Controller
 	public function home()
 	{
 		return view('admin.home', [
-			'usedOffers' => UsedOffer::all(),
+			'usedOffers' => UsedOffer::latest()->limit(5)->get(),
 		]);
 	}
 }

@@ -22,7 +22,7 @@
             <div class="col-3">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Antal kuponner</h5>
+                        <h5 class="card-title">Antal kuponer</h5>
                         <p class="card-text">{{ \App\Models\Offer::count() }}</p>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
             <div class="col-3">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Brugte kuponner</h5>
+                        <h5 class="card-title">Brugte kuponer</h5>
                         <p class="card-text">{{ \App\Models\UsedOffer::count() }}</p>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
         </div>
         <div class="row">
             <div class="col-6">
-                <h3>Brugte kuponner</h3>
+                <h3>Brugte kuponer</h3>
                 <table class="table">
                     <thead>
                         <tr>
@@ -58,7 +58,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <th scope="row">Ingen brugte kuponner her</th>
+                                <th scope="row">Ingen brugte kuponer her</th>
                             </tr>
                         @endforelse
                     </tbody>

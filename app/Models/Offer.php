@@ -12,7 +12,7 @@ class Offer extends Model
 {
 	use HasFactory, HasUploads;
 
-	protected $fillable = ['name', 'description', 'sponsor_id'];
+	protected $fillable = ['name', 'description', 'sponsor_id', 'cooldown'];
 
 	public function sponsor()
 	{

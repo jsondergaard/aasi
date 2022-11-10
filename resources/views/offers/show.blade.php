@@ -12,23 +12,23 @@
             </a> --}}
             <div class="row">
                 <div class="col-md-6 col-sm-12">
-                    <img class="w-100" height="450" style="object-fit: cover;"
-                        src="https://images.unsplash.com/photo-1539252554453-80ab65ce3586?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80">
+                    <img class="w-100" height="450" style="object-fit: cover;" src="{{ $offer->imagePath }}">
                 </div>
                 <div class="col-md-6 col-sm-12">
                     <h1>{{ $offer->name }}</h1>
                     <p>{{ $offer->description }}</p>
-                    {{-- @if (auth()->user()->usedOffer($offer))
-                        <p>Sidst brugt: {{ auth()->user()->usedOffer($offer)->toHuman() }}</p>
-                    @endif --}}
+                    @if (auth()->user()->usedOffer($offer))
+                        <h4>Din kupon er aktiveret!</h4>
+                        <p>Sidst brugt: {{ auth()->user()->usedOffer($offer)->diffForHumans() }}</p>
+                    @else
+                        <form action="{{ route('offers.activate', $offer) }}" method="POST">
+                            @csrf
+                            @method('PATCH')
+                            <button type="submit" class="btn btn-lg btn-primary mb-5">Aktiver din kupon</button>
+                        </form>
+                    @endif
 
-                    <form action="{{ route('offers.activate', $offer) }}" method="POST">
-                        @csrf
-                        @method('PATCH')
-                        <button type="submit" class="btn btn-lg btn-primary mb-5">Aktiver din kupon</button>
-                    </form>
-
-                    <div class="swiper">
+                    {{-- <div class="swiper">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="260px"
                             height="45px">
                             <g id="dotted-line" class="dotted-line">
@@ -62,7 +62,7 @@
                         <div class="error">
                             Der er kraftedeme sket en fejl. Beklager.
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

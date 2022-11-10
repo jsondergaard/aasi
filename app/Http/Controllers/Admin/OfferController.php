@@ -49,7 +49,8 @@ class OfferController extends Controller
 	{
 		$offer->update([
 			'name' => $request->name,
-			'description' => $request->description
+			'description' => $request->description,
+			'cooldown' => ($request->cooldown != 0) ? $request->cooldown : null,
 		]);
 
 		if ($request->file('image')) {
@@ -65,6 +66,7 @@ class OfferController extends Controller
 			'name' => $request->name,
 			'description' => $request->description,
 			'sponsor_id' => $sponsor->id,
+			'cooldown' => ($request->cooldown != 0) ? $request->cooldown : null,
 		]);
 
 		if ($request->file('image')) {

@@ -52,6 +52,13 @@ class User extends Authenticatable
 
 	public function usedOffer(Offer $offer)
 	{
-		return true;
+		$cooldown = ($offer->cooldown) ? now()->subSeconds($offer->cooldown) : now()->subMinutes(5);
+
+		if ($usedOffer = UsedOffer::where([
+			'user_id' => auth()->id(),
+			'offer_id' => $offer->id,
+		])->whereBetween('created_at', [$cooldown, now()])->first()) {
+			return $usedOffer->created_at;
+		}
 	}
 }
