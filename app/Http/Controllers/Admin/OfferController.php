@@ -38,13 +38,38 @@ class OfferController extends Controller
 		]);
 	}
 
+	public function edit(Sponsor $sponsor, Offer $offer)
+	{
+		return view('admin.sponsors.offers.edit', [
+			'offer' => $offer,
+		]);
+	}
+
+	public function update(Sponsor $sponsor, Offer $offer, StoreOffer $request)
+	{
+		$offer->update([
+			'name' => $request->name,
+			'description' => $request->description
+		]);
+
+		if ($request->file('image')) {
+			$offer->upload($request->file('image'));
+		}
+
+		return redirect(route('admin.sponsors.index'));
+	}
+
 	public function store(Sponsor $sponsor, StoreOffer $request)
 	{
-		Offer::create([
+		$offer = Offer::create([
 			'name' => $request->name,
 			'description' => $request->description,
 			'sponsor_id' => $sponsor->id,
 		]);
+
+		if ($request->file('image')) {
+			$offer->upload($request->file('image'));
+		}
 
 		return redirect(route('admin.sponsors.index'));
 	}

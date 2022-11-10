@@ -64,15 +64,23 @@ class SponsorController extends Controller
 			'description' => $request->description
 		]);
 
+		if ($request->file('image')) {
+			$sponsor->upload($request->file('image'));
+		}
+
 		return redirect(route('admin.sponsors.index'));
 	}
 
 	public function store(StoreSponsor $request)
 	{
-		Sponsor::create([
+		$sponsor = Sponsor::create([
 			'name' => $request->name,
 			'description' => $request->description,
 		]);
+
+		if ($request->file('image')) {
+			$sponsor->upload($request->file('image'));
+		}
 
 		return redirect(route('admin.sponsors.index'));
 	}

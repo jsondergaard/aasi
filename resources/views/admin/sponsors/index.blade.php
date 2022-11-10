@@ -17,6 +17,7 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Kupon</th>
+                    <th scope="col">Billede</th>
                     <th scope="col">Sponsor</th>
                     <th scope="col">Oprettet</th>
                     @can('update sponsor' || 'delete sponsor')
@@ -29,6 +30,8 @@
                     <tr>
                         <th scope="row">{{ $sponsor->id }}</th>
                         <td> </td>
+                        <td><img src="{{ $sponsor->thumbnailPath }}" style="object-fit: cover;" height="32"
+                                width="32" /></td>
                         <td>{{ $sponsor->name }}</td>
                         <td>{{ $sponsor->created_at->diffForHumans() }}</td>
                         <td>
@@ -60,6 +63,8 @@
                         <tr>
                             <th scope="row">{{ $offer->id }}</th>
                             <th scope="row">{{ $sponsor->id }}</th>
+                            <th scope="row"><img src="{{ $offer->thumbnailPath }}" style="object-fit: cover;"
+                                    height="32" width="32" /></th>
                             <td>{{ $offer->name }}</td>
                             <td>{{ $offer->created_at->diffForHumans() }}</td>
                             <td>
