@@ -9,21 +9,6 @@ use App\Http\Controllers\Controller;
 
 class OfferController extends Controller
 {
-	/**
-	 * Create a new controller instance.
-	 *
-	 * @return void
-	 */
-	public function __construct()
-	{
-		$this->middleware('auth');
-	}
-
-	/**
-	 * Show the application dashboard.
-	 *
-	 * @return \Illuminate\Contracts\Support\Renderable
-	 */
 	public function index()
 	{
 		return view('sponsors', [
@@ -72,6 +57,13 @@ class OfferController extends Controller
 		if ($request->file('image')) {
 			$offer->upload($request->file('image'));
 		}
+
+		return redirect(route('admin.sponsors.index'));
+	}
+
+	public function destroy(Sponsor $sponsor, Offer $offer)
+	{
+		$offer->delete();
 
 		return redirect(route('admin.sponsors.index'));
 	}

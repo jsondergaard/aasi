@@ -16,7 +16,7 @@
             <thead>
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Forældre ID</th>
+                    <th scope="col">Tilhører</th>
                     <th scope="col">Side</th>
                     <th scope="col">Oprettet</th>
                     @can('update page' || 'delete page')
@@ -28,7 +28,7 @@
                 @forelse ($pages as $page)
                     <tr>
                         <th scope="row">{{ $page->id }}</th>
-                        <th scope="row"></th>
+                        <th scope="row">—</th>
                         <td>{{ $page->name }}</td>
                         <td>{{ $page->created_at->diffForHumans() }}</td>
                         <td>
@@ -55,7 +55,7 @@
                     @foreach ($page->children as $child)
                         <tr class="table-info">
                             <th scope="row">{{ $child->id }}</th>
-                            <th scope="row">{{ $page->id }}</th>
+                            <th scope="row">{{ $page->name }}</th>
                             <td>{{ $child->name }}</td>
                             <td>{{ $child->created_at->diffForHumans() }}</td>
                             <td>

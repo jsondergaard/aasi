@@ -15,8 +15,8 @@
         <table class="table table-borderless">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Kupon</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Tilhører</th>
                     <th scope="col">Billede</th>
                     <th scope="col">Sponsor</th>
                     <th scope="col">Oprettet</th>
