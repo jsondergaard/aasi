@@ -52,7 +52,7 @@
                         @forelse ($usedOffers as $usedOffer)
                             <tr>
                                 <th scope="row">{{ $usedOffer->user->name }}</th>
-                                <td>{{ $usedOffer->offer->name }}
+                                <td>{{ $usedOffer->offer->name ?? 'Slettet' }}
                                 <td>{{ $usedOffer->sponsor->name }}</td>
                                 <td>{{ $usedOffer->created_at->diffForHumans() }}</td>
                             </tr>

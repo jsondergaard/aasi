@@ -3,7 +3,7 @@
 @section('main')
     <div class="container mt-4">
         <h1 class="h2">Opret kupon</h1>
-        <form action="{{ route('admin.sponsors.offers.store', $sponsor) }}" method="POST">
+        <form action="{{ route('admin.sponsors.offers.store', $sponsor) }}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <div class="row mb-3">

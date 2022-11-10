@@ -48,12 +48,16 @@
                                         class="btn btn-primary me-2">Rediger</a>
                                 @endcan
                                 @can('delete sponsor')
-                                    <form action="{{ route('admin.sponsors.destroy', $sponsor) }}" method="POST"
-                                        onSubmit="return confirm('Er du sikker på du vil slette sponsoren?')">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Slet</button>
-                                    </form>
+                                    @if ($sponsor->offers->count() > 0)
+                                        <button class="btn btn-outline-danger">Slet</button>
+                                    @else
+                                        <form action="{{ route('admin.sponsors.destroy', $sponsor) }}" method="POST"
+                                            onSubmit="return confirm('Er du sikker på du vil slette sponsoren?')">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Slet</button>
+                                        </form>
+                                    @endif
                                 @endcan
 
                             </div>
