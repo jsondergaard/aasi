@@ -2,8 +2,8 @@
 
 @section('main')
     <div class="container mt-4">
-        <div class="row mb-4">
-            <div class="col-3">
+        <div class="row g-4 mb-4">
+            <div class="col-lg-3 col-md-4 col-sm-12">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Antal brugere</h5>
@@ -11,7 +11,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-3">
+            <div class="col-lg-3 col-md-4 col-sm-12">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Antal sponsorer</h5>
@@ -19,7 +19,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-3">
+            <div class="col-lg-3 col-md-4 col-sm-12">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Antal kuponer</h5>
@@ -27,7 +27,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-3">
+            <div class="col-lg-3 col-md-4 col-sm-12">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Brugte kuponer</h5>
@@ -36,7 +36,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row g-4">
             <div class="col-md-12 col-lg-6">
                 <h3>Brugte kuponer</h3>
                 <table class="table">
