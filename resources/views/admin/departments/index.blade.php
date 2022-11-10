@@ -17,6 +17,7 @@
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Navn</th>
+                    <th scope="col">Medlemmer</th>
                     <th scope="col">Oprettet</th>
                     @can('update department' || 'delete department')
                         <th scope="col"></th>
@@ -28,6 +29,7 @@
                     <tr>
                         <th scope="row">{{ $department->id }}</th>
                         <td>{{ $department->name }}</td>
+                        <td>{{ $department->users()->count() }}</td>
                         <td>{{ $department->created_at->diffForHumans() }}</td>
                         <td>
                             <div class="d-flex justify-content-end">

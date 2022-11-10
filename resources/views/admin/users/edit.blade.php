@@ -93,6 +93,22 @@
                         @endif
                     </div>
                 </div>
+
+                <div class="col-4">
+                    <label for="departments">Afdelinger</label>
+                    <select name="departments[]" class="form-control" multiple>
+                        @foreach ($departments as $department)
+                            <option value="{{ $department->id }}" @if (is_array(old('department')) && in_array($department->id, old('departments'))) selected @endif>
+                                {{ $department->name }}</option>
+                        @endforeach
+                    </select>
+
+                    @if ($errors->has('departments'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('departments') }}</strong>
+                        </span>
+                    @endif
+                </div>
             </div>
 
             <button type="submit" class="btn btn-primary">Gem</button>

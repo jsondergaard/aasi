@@ -31,6 +31,7 @@ class UserController extends Controller
 	{
 		return view('admin.users.edit', [
 			'user' => $user,
+			'departments' => Department::all(),
 		]);
 	}
 

@@ -58,7 +58,6 @@
                 </div>
             </div>
 
-
             <div class="col-4">
                 <label for="departments">Afdelinger</label>
                 <select name="departments[]" class="form-control" multiple>
