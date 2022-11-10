@@ -26,7 +26,7 @@ class OfferController extends Controller
 
 	public function view(Offer $offer)
 	{
-		return view('offers.view', [
+		return view('offers.show', [
 			'offer' => $offer,
 		]);
 	}
