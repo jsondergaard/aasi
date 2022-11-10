@@ -22,6 +22,8 @@
 
     @yield('main')
 
+    <x-sponsor :sponsors="\App\Models\Sponsor::all()" />
+
     @include('layouts.partials.footer')
 
     @stack('scripts')
