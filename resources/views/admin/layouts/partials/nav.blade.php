@@ -1,23 +1,34 @@
 <nav class="py-2 bg-light border-bottom">
     <div class="container d-flex flex-wrap">
         <ul class="nav me-auto">
-            <li class="nav-item"><a href="/" class="nav-link link-dark px-2 active me-4" aria-current="page">AASI</a>
+            <li class="nav-item">
+                <a href="/" class="nav-link link-dark px-2 active me-4" aria-current="page">AASI</a>
             </li>
             @can('view users')
-                <li class="nav-item"><a href="{{ route('admin.users.index') }}" class="nav-link link-dark px-2">Brugere</a>
-                @endcan
-                @can('view sponsors')
+                <li class="nav-item">
+                    <a href="{{ route('admin.users.index') }}" class="nav-link link-dark px-2">Brugere</a>
+                </li>
+            @endcan
+            @can('view sponsors')
                 <li class="nav-item"><a href="{{ route('admin.sponsors.index') }}"
                         class="nav-link link-dark px-2">Sponsorer</a>
                 </li>
             @endcan
             @can('view pages')
-                <li class="nav-item"><a href="{{ route('admin.pages.index') }}" class="nav-link link-dark px-2">Sider</a>
-                @endcan
-                @can('view roles')
-                <li class="nav-item"><a href="{{ route('admin.roles.index') }}" class="nav-link link-dark px-2">Roller</a>
-                @endcan
-            </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.pages.index') }}" class="nav-link link-dark px-2">Sider</a>
+                </li>
+            @endcan
+            @can('view roles')
+                <li class="nav-item">
+                    <a href="{{ route('admin.roles.index') }}" class="nav-link link-dark px-2">Roller</a>
+                </li>
+            @endcan
+            @can('view departments')
+                <li class="nav-item">
+                    <a href="{{ route('admin.departments.index') }}" class="nav-link link-dark px-2">Afdelinger</a>
+                </li>
+            @endcan
         </ul>
         <ul class="nav">
             @guest

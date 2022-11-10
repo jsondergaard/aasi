@@ -65,7 +65,25 @@
                 </table>
             </div>
             <div class="col-6">
-                Anden admin ting
+                <h3>Nyeste brugere</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Bruger</th>
+                            <th scope="col">Afdeling</th>
+                            <th scope="col">Oprettet</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($latestUsers as $user)
+                            <tr>
+                                <th scope="row">{{ $user->name }}</th>
+                                <th scope="row">{{ $user->listDepartments }}</th>
+                                <td>{{ $user->created_at->diffForHumans() }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

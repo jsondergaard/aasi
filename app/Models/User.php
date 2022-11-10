@@ -47,7 +47,19 @@ class User extends Authenticatable
 
 	public function departments()
 	{
-		return $this->hasMany(Department::class);
+		return $this->belongsToMany(Department::class);
+	}
+
+	public function getListDepartmentsAttribute()
+	{
+		$departmentsList = '';
+
+		if ($this->departments) {
+			foreach ($this->departments as $department) {
+				$departmentsList .= $department->name;
+			}
+		}
+		return $departmentsList;
 	}
 
 	public function usedOffer(Offer $offer)

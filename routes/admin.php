@@ -28,6 +28,15 @@ Route::group(['prefix' => 'pages'], function () {
 	Route::delete('/{page}', [App\Http\Controllers\Admin\PageController::class, 'destroy'])->middleware(['permission:delete page'])->name('admin.pages.destroy');
 });
 
+Route::group(['prefix' => 'departments'], function () {
+	Route::get('/', [App\Http\Controllers\Admin\DepartmentController::class, 'index'])->middleware(['permission:view departments'])->name('admin.departments.index');
+	Route::get('/create', [App\Http\Controllers\Admin\DepartmentController::class, 'create'])->middleware(['permission:create department'])->name('admin.departments.create');
+	Route::post('/create', [App\Http\Controllers\Admin\DepartmentController::class, 'store'])->middleware(['permission:create department'])->name('admin.departments.store');
+	Route::get('/{department}', [App\Http\Controllers\Admin\DepartmentController::class, 'edit'])->middleware(['permission:update department'])->name('admin.departments.edit');
+	Route::patch('/{department}', [App\Http\Controllers\Admin\DepartmentController::class, 'update'])->middleware(['permission:update department'])->name('admin.departments.update');
+	Route::delete('/{department}', [App\Http\Controllers\Admin\DepartmentController::class, 'destroy'])->middleware(['permission:delete department'])->name('admin.departments.destroy');
+});
+
 Route::group(['prefix' => 'users'], function () {
 	Route::get('/', [App\Http\Controllers\Admin\UserController::class, 'index'])->middleware(['permission:view users'])->name('admin.users.index');
 	Route::get('/create', [App\Http\Controllers\Admin\UserController::class, 'create'])->middleware(['permission:create user'])->name('admin.users.create');
