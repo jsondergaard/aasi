@@ -6,12 +6,14 @@ Route::group(['prefix' => 'sponsors'], function () {
 	Route::get('/', [App\Http\Controllers\Admin\SponsorController::class, 'index'])->middleware(['permission:view sponsors'])->name('admin.sponsors.index');
 	Route::get('/create', [App\Http\Controllers\Admin\SponsorController::class, 'create'])->middleware(['permission:create sponsor'])->name('admin.sponsors.create');
 	Route::post('/create', [App\Http\Controllers\Admin\SponsorController::class, 'store'])->middleware(['permission:create sponsor'])->name('admin.sponsors.store');
+	Route::get('/{sponsor}', [App\Http\Controllers\Admin\SponsorController::class, 'edit'])->middleware(['permission:update sponsor'])->name('admin.sponsors.edit');
 	Route::patch('/{sponsor}', [App\Http\Controllers\Admin\SponsorController::class, 'update'])->middleware(['permission:update sponsor'])->name('admin.sponsors.update');
 	Route::delete('/{sponsor}', [App\Http\Controllers\Admin\SponsorController::class, 'destroy'])->middleware(['permission:delete sponsor'])->name('admin.sponsors.destroy');
 
 	Route::group(['prefix' => '{sponsor}/offers'], function () {
 		Route::get('/create', [App\Http\Controllers\Admin\OfferController::class, 'create'])->middleware(['permission:create offer'])->name('admin.sponsors.offers.create');
 		Route::post('/create', [App\Http\Controllers\Admin\OfferController::class, 'store'])->middleware(['permission:create offer'])->name('admin.sponsors.offers.store');
+		Route::get('/{offer}', [App\Http\Controllers\Admin\OfferController::class, 'edit'])->middleware(['permission:update offer'])->name('admin.sponsors.offers.edit');
 	});
 });
 
