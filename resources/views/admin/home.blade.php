@@ -37,7 +37,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-6">
+            <div class="col-md-12 col-lg-6">
                 <h3>Brugte kuponer</h3>
                 <table class="table">
                     <thead>
@@ -64,7 +64,8 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col-6">
+
+            <div class="col-md-12 col-lg-6">
                 <h3>Nyeste brugere</h3>
                 <table class="table">
                     <thead>
