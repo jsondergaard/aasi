@@ -14,6 +14,8 @@ Route::group(['prefix' => 'sponsors'], function () {
 		Route::get('/create', [App\Http\Controllers\Admin\OfferController::class, 'create'])->middleware(['permission:create offer'])->name('admin.sponsors.offers.create');
 		Route::post('/create', [App\Http\Controllers\Admin\OfferController::class, 'store'])->middleware(['permission:create offer'])->name('admin.sponsors.offers.store');
 		Route::get('/{offer}', [App\Http\Controllers\Admin\OfferController::class, 'edit'])->middleware(['permission:update offer'])->name('admin.sponsors.offers.edit');
+		Route::patch('/{offer}', [App\Http\Controllers\Admin\OfferController::class, 'update'])->middleware(['permission:update offer'])->name('admin.sponsors.offers.update');
+		Route::delete('/{offer}', [App\Http\Controllers\Admin\OfferController::class, 'destroy'])->middleware(['permission:delete offer'])->name('admin.sponsors.offers.destroy');
 	});
 });
 

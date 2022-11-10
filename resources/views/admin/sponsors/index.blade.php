@@ -65,12 +65,12 @@
                             <td>
                                 <div class="d-flex justify-content-end">
                                     @can('update offer')
-                                        <a href="{{ route('admin.sponsors.edit', $sponsor) }}"
+                                        <a href="{{ route('admin.sponsors.offers.edit', [$sponsor, $offer]) }}"
                                             class="btn btn-primary me-2">Rediger</a>
                                     @endcan
                                     @can('delete offer')
-                                        <form action="{{ route('admin.sponsors.destroy', $sponsor) }}" method="POST"
-                                            onSubmit="return confirm('Er du sikker på du vil slette siden?')">
+                                        <form action="{{ route('admin.sponsors.offers.destroy', [$sponsor, $offer]) }}"
+                                            method="POST" onSubmit="return confirm('Er du sikker på du vil slette kuponnen?')">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">Slet</button>
