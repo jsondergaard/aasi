@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
+use App\Models\Department;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreUser;
 
@@ -41,7 +42,9 @@ class UserController extends Controller
 	 */
 	public function create()
 	{
-		return view('admin.users.create');
+		return view('admin.users.create', [
+			'departments' => Department::all(),
+		]);
 	}
 
 	/**
@@ -62,6 +65,8 @@ class UserController extends Controller
 		foreach ($request->departments as $department) {
 			$user->departments()->toggle($department);
 		}
+
+		// TODO: Send an email
 
 		return redirect(route('admin.users.index'));
 	}
