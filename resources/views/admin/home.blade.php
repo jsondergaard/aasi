@@ -2,6 +2,71 @@
 
 @section('main')
     <div class="container mt-4">
-        Admin
+        <div class="row mb-4">
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Antal brugere</h5>
+                        <p class="card-text">{{ \App\Models\User::count() }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Antal sponsorer</h5>
+                        <p class="card-text">{{ \App\Models\Sponsor::count() }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Antal kuponner</h5>
+                        <p class="card-text">{{ \App\Models\Offer::count() }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Brugte kuponner</h5>
+                        <p class="card-text">{{ \App\Models\UsedOffer::count() }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <h3>Brugte kuponner</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Bruger</th>
+                            <th scope="col">Kupon</th>
+                            <th scope="col">V/ sponsor</th>
+                            <th scope="col">Tidspunkt</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse ($usedOffers as $usedOffer)
+                            <tr>
+                                <th scope="row">{{ $usedOffer->user->name }}</th>
+                                <td>{{ $usedOffer->offer->name }}
+                                <td>{{ $usedOffer->sponsor->name }}</td>
+                                <td>{{ $usedOffer->created_at->diffForHumans() }}</td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <th scope="row">Ingen brugte kuponner her</th>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-6">
+                Anden admin ting
+            </div>
+        </div>
     </div>
 @endsection
