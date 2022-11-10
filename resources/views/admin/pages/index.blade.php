@@ -53,7 +53,7 @@
                         </td>
                     </tr>
                     @foreach ($page->children as $child)
-                        <tr>
+                        <tr class="table-info">
                             <th scope="row">{{ $child->id }}</th>
                             <th scope="row">{{ $page->id }}</th>
                             <td>{{ $child->name }}</td>

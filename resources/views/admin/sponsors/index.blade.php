@@ -60,7 +60,7 @@
                         </td>
                     </tr>
                     @foreach ($sponsor->offers as $offer)
-                        <tr>
+                        <tr class="table-info">
                             <th scope="row">{{ $offer->id }}</th>
                             <th scope="row">{{ $sponsor->id }}</th>
                             <th scope="row"><img src="{{ $offer->thumbnailPath }}" style="object-fit: cover;"
