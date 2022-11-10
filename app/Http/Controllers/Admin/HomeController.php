@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\UsedOffer;
 
 class HomeController extends Controller
 {
@@ -13,6 +14,8 @@ class HomeController extends Controller
 	 */
 	public function home()
 	{
-		return view('admin.home');
+		return view('admin.home', [
+			'usedOffers' => UsedOffer::all(),
+		]);
 	}
 }

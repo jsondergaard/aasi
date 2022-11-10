@@ -16,7 +16,7 @@ class OfferController extends Controller
 	{
 		$this->middleware('auth');
 	}
-	
+
 	public function index()
 	{
 		return view('offers.index', [
@@ -29,5 +29,12 @@ class OfferController extends Controller
 		return view('offers.view', [
 			'offer' => $offer,
 		]);
+	}
+
+	public function activate(Offer $offer)
+	{
+		$offer->activate();
+
+		return redirect(route('offers.view', $offer));
 	}
 }
