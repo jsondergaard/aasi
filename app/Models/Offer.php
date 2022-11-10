@@ -16,4 +16,15 @@ class Offer extends Model
 	{
 		return $this->belongsTo(Sponsor::class);
 	}
+
+	public function activate()
+	{
+		UsedOffer::create([
+			'user_id' => auth()->id(),
+			'sponsor_id' => $this->sponsor->id,
+			'offer_id' => $this->id,
+		]);
+
+		return true;
+	}
 }

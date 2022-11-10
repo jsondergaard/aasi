@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use App\Models\Department;
+use App\Models\Offer;
 
 class User extends Authenticatable
 {
@@ -47,5 +48,10 @@ class User extends Authenticatable
 	public function departments()
 	{
 		return $this->hasMany(Department::class);
+	}
+
+	public function usedOffer(Offer $offer)
+	{
+		return true;
 	}
 }

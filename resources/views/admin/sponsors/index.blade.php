@@ -33,8 +33,15 @@
                         <td>{{ $sponsor->created_at->diffForHumans() }}</td>
                         <td>
                             <div class="d-flex justify-content-end">
+                                @can('create offer')
+                                    <form action="{{ route('admin.sponsors.offers.create', $sponsor) }}" method="GET">
+                                        @csrf
+                                        @method('CREATE')
+                                        <button type="submit" class="btn btn-success me-2">Opret kupon</button>
+                                    </form>
+                                @endcan
                                 @can('update sponsor')
-                                    <a href="{{ route('admin.sponsors.update', $sponsor) }}"
+                                    <a href="{{ route('admin.sponsors.edit', $sponsor) }}"
                                         class="btn btn-primary me-2">Rediger</a>
                                 @endcan
                                 @can('delete sponsor')
@@ -42,44 +49,37 @@
                                         onSubmit="return confirm('Er du sikker på du vil slette sponsoren?')">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger me-2">Slet</button>
+                                        <button type="submit" class="btn btn-danger">Slet</button>
                                     </form>
                                 @endcan
-                                @can('create offer')
-                                    <form action="{{ route('admin.sponsors.offers.create', $sponsor) }}" method="GET">
-                                    @csrf
-                                    @method('CREATE')
-                                    <button type="submit" class="btn btn-success">Opret kupon</button>
-                                  </form>
-                                @endcan
-                                    
+
                             </div>
                         </td>
                     </tr>
                     @foreach ($sponsor->offers as $offer)
-                    <tr>
-                        <th scope="row">{{ $offer->id }}</th>
-                        <th scope="row">{{ $sponsor->id }}</th>
-                        <td>{{ $offer->name }}</td>
-                        <td>{{ $offer->created_at->diffForHumans() }}</td>
-                        <td>
-                            <div class="d-flex justify-content-end">
-                                @can('update page')
-                                    <a href="{{ route('admin.sponsors.view', $sponsor) }}"
-                                        class="btn btn-primary me-2">Rediger</a>
-                                @endcan
-                                @can('delete page')
-                                    <form action="{{ route('admin.sponsors.destroy', $sponsor) }}" method="POST"
-                                        onSubmit="return confirm('Er du sikker på du vil slette siden?')">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Slet</button>
-                                    </form>
-                                @endcan
-                            </div>
-                        </td>
-                    </tr>
-                @endforeach
+                        <tr>
+                            <th scope="row">{{ $offer->id }}</th>
+                            <th scope="row">{{ $sponsor->id }}</th>
+                            <td>{{ $offer->name }}</td>
+                            <td>{{ $offer->created_at->diffForHumans() }}</td>
+                            <td>
+                                <div class="d-flex justify-content-end">
+                                    @can('update offer')
+                                        <a href="{{ route('admin.sponsors.edit', $sponsor) }}"
+                                            class="btn btn-primary me-2">Rediger</a>
+                                    @endcan
+                                    @can('delete offer')
+                                        <form action="{{ route('admin.sponsors.destroy', $sponsor) }}" method="POST"
+                                            onSubmit="return confirm('Er du sikker på du vil slette siden?')">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Slet</button>
+                                        </form>
+                                    @endcan
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
                 @empty
                     <tr>
                         <th scope="row">Ingen sponsorer her!</th>

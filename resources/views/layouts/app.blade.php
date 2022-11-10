@@ -15,12 +15,17 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
 
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
 </head>
 
 <body class="d-flex flex-column h-100">
     @include('layouts.partials.nav')
 
     @yield('main')
+
+    <div class="row">
+        <x-sponsor :sponsors="\App\Models\Sponsor::all()" />
+    </div>
 
     @include('layouts.partials.footer')
 
