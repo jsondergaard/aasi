@@ -12,7 +12,7 @@
                 </div>
             @endcan
         </div>
-        <table class="table table-borderless">
+        <table class="table table-borderless" id="table">
             <thead>
                 <tr>
                     <th scope="col">ID</th>
@@ -57,3 +57,19 @@
         </table>
     </div>
 @endsection
+
+@push('scripts')
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#table').DataTable();
+        });
+    </script>
+@endpush
+
+@push('stylesheets')
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
+@endpush
