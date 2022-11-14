@@ -3,7 +3,7 @@
 @section('main')
     <div class="container mt-4">
         @foreach ($sponsors as $sponsor)
-            {{ $sponsor->name }}
+            <div class="col-4"><img src="" alt="{{ $sponsor->name }}" /></div>
         @endforeach
     </div>
 @endsection
