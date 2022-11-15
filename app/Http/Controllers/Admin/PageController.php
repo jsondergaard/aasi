@@ -61,6 +61,7 @@ class PageController extends Controller
 			'parent_id' => ($request->parent_id == 0) ? null : $request->parent_id,
 			'is_page' => ($request->is_page) ? 1 : 0,
 			'author_id' => auth()->user()->id,
+			'order_id' => $request->order_id
 		]);
 
 		return redirect(route('admin.pages.index'));
@@ -79,9 +80,10 @@ class PageController extends Controller
 			'markdown' => $request->markdown,
 			'parent_id' => ($request->parent_id == 0) ? null : $request->parent_id,
 			'is_page' => ($request->is_page) ? 1 : 0,
+			'order_id' => $request->order_id
 		]);
 
-		return redirect(route('admin.pages.edit', $page));
+		return redirect(route('admin.pages.index'));
 	}
 
 	/**

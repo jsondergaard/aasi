@@ -19,6 +19,7 @@
                     <th scope="col">Tilhører</th>
                     <th scope="col">Side</th>
                     <th scope="col">Oprettet</th>
+                    <th scope="col">Orden ID</th>
                     @can('update page' || 'delete page')
                         <th scope="col"></th>
                     @endcan
@@ -31,6 +32,7 @@
                         <th scope="row">—</th>
                         <td>{{ $page->name }}</td>
                         <td>{{ $page->created_at->diffForHumans() }}</td>
+                        <td>{{ $page->order_id }}</td>
                         <td>
                             <div class="d-flex justify-content-end">
                                 @can('update page')
@@ -58,6 +60,7 @@
                             <th scope="row">{{ $page->name }}</th>
                             <td>{{ $child->name }}</td>
                             <td>{{ $child->created_at->diffForHumans() }}</td>
+                            <td>{{ $child->order_id }}</td>
                             <td>
                                 <div class="d-flex justify-content-end">
                                     @can('update page')

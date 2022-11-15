@@ -27,7 +27,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="form-group">
                         <label for="parent_id">Forældre side</label>
                         <select name="parent_id" class="form-control @error('parent_id') is-invalid @enderror">
@@ -47,7 +47,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="form-group">
                         <label for="is_page">Vis i dropdown</label>
                         <div class="form-check">
@@ -56,6 +56,19 @@
                                 Vis i dropdown
                             </label>
                         </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="order_id">Orden ID</label>
+                        <input type="text" name="order_id" class="form-control @error('order_id') is-invalid @enderror"
+                            value="{{ old('order_id') }}" required autofocus>
+
+                        @if ($errors->has('order_id'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('order_id') }}</strong>
+                            </span>
+                        @endif
                     </div>
                 </div>
             </div>
