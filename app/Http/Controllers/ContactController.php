@@ -15,12 +15,6 @@ class ContactController extends Controller
 	{
 		$this->middleware('auth');
 	}
-
-	public function messagebox()
-	{
-		return view('');
-	}
-
 	/**
 	 * Show the application dashboard.
 	 *
