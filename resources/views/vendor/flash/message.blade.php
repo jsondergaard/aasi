@@ -1,5 +1,5 @@
-<div class="container mt-4">
-    @foreach (session('flash_notification', collect())->toArray() as $message)
+@foreach (session('flash_notification', collect())->toArray() as $message)
+    <div class="container mt-4">
         @if ($message['overlay'])
             @include('flash::modal', [
                 'modalClass' => 'flash-modal',
@@ -18,7 +18,7 @@
                 {!! $message['message'] !!}
             </div>
         @endif
-    @endforeach
-</div>
+    </div>
+@endforeach
 
 {{ session()->forget('flash_notification') }}

@@ -18,6 +18,7 @@ class DepartmentFactory extends Factory
 	{
 		return [
 			'name' => fake()->company(),
+			'created_at' => $this->faker->dateTimeBetween('-1 week'),
 		];
 	}
 }

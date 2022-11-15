@@ -19,6 +19,7 @@ class OfferFactory extends Factory
 		return [
 			'name' => fake()->company(),
 			'description' => fake()->catchPhrase(),
+			'created_at' => $this->faker->dateTimeBetween('-1 week'),
 		];
 	}
 }

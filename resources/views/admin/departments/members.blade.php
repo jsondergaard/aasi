@@ -17,7 +17,11 @@
                 @forelse ($members as $member)
                     <tr>
                         <th scope="row">{{ $member->id }}</th>
-                        <td>{{ $member->name }}</td>
+                        <td>
+                            <a href="{{ route('admin.users.edit', $member) }}">
+                                {{ $member->name }}
+                            </a>
+                        </td>
                         <td>{{ $member->departments()->find($department)->pivot->created_at->diffForHumans() }}
                         </td>
                     </tr>

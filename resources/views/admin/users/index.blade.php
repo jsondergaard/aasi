@@ -33,7 +33,7 @@
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->departments()->count() }}</td>
-                        <td>{{ $user->created_at->diffForHumans() }}</td>
+                        <td>{{ $user->created_at }}</td>
                         <td>
                             <div class="d-flex justify-content-end">
                                 @can('update user')
