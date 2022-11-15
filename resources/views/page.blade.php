@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
 @section('main')
-    {!! Blade::render(\GrahamCampbell\Markdown\Facades\Markdown::convert($page->markdown)->getContent()) !!}
+    <div class="mt-4">
+        {!! Blade::render(\GrahamCampbell\Markdown\Facades\Markdown::convert($page->markdown)->getContent()) !!}
+    </div>
 @endsection
