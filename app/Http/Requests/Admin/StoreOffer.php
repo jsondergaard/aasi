@@ -25,10 +25,7 @@ class StoreOffer extends FormRequest
 	public function rules()
 	{
 		return [
-			'name' => [
-				'required',
-				Rule::unique('offers')->ignore($this->route('offer'))
-			],
+			'name' => 'required',
 			'description' => 'required',
 		];
 	}

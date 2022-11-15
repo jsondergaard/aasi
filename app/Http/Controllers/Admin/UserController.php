@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
+use App\Models\Department;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreUser;
 
@@ -30,6 +31,7 @@ class UserController extends Controller
 	{
 		return view('admin.users.edit', [
 			'user' => $user,
+			'departments' => Department::all(),
 		]);
 	}
 
@@ -41,7 +43,9 @@ class UserController extends Controller
 	 */
 	public function create()
 	{
-		return view('admin.users.create');
+		return view('admin.users.create', [
+			'departments' => Department::all(),
+		]);
 	}
 
 	/**
@@ -56,12 +60,13 @@ class UserController extends Controller
 			'name' => $request->name,
 			'email' => $request->email,
 			'gender' => $request->gender,
-			'password' => 'null',
 		]);
 
 		foreach ($request->departments as $department) {
 			$user->departments()->toggle($department);
 		}
+
+		// TODO: Send an email
 
 		return redirect(route('admin.users.index'));
 	}
@@ -83,5 +88,19 @@ class UserController extends Controller
 		$user->syncRoles($request->role);
 
 		return redirect(route('admin.users.edit', $user));
+	}
+
+	public function destroy(User $user)
+	{
+		$user->delete();
+
+		return redirect(route('admin.users.index'));
+	}
+
+	public function toggleDepartment(User $user, Department $department)
+	{
+		$user->departments()->toggle($department->id, ['created_at' => now()]);
+
+		return back();
 	}
 }

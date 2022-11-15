@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Models\UsedOffer;
 
 class HomeController extends Controller
 {
@@ -13,6 +15,9 @@ class HomeController extends Controller
 	 */
 	public function home()
 	{
-		return view('admin.home');
+		return view('admin.home', [
+			'usedOffers' => UsedOffer::latest()->limit(5)->get(),
+			'latestUsers' => User::latest()->limit(5)->get(),
+		]);
 	}
 }

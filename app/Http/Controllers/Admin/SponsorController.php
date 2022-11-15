@@ -9,21 +9,6 @@ use App\Http\Controllers\Controller;
 
 class SponsorController extends Controller
 {
-	/**
-	 * Create a new controller instance.
-	 *
-	 * @return void
-	 */
-	public function __construct()
-	{
-		$this->middleware('auth');
-	}
-
-	/**
-	 * Show the application dashboard.
-	 *
-	 * @return \Illuminate\Contracts\Support\Renderable
-	 */
 	public function index()
 	{
 		return view('admin.sponsors.index', [
@@ -61,18 +46,28 @@ class SponsorController extends Controller
 	{
 		$sponsor->update([
 			'name' => $request->name,
-			'description' => $request->description
+			'description' => $request->description,
+			'link' => $request->link,
 		]);
+
+		if ($request->file('image')) {
+			$sponsor->upload($request->file('image'));
+		}
 
 		return redirect(route('admin.sponsors.index'));
 	}
 
 	public function store(StoreSponsor $request)
 	{
-		Sponsor::create([
+		$sponsor = Sponsor::create([
 			'name' => $request->name,
 			'description' => $request->description,
+			'link' => $request->link,
 		]);
+
+		if ($request->file('image')) {
+			$sponsor->upload($request->file('image'));
+		}
 
 		return redirect(route('admin.sponsors.index'));
 	}

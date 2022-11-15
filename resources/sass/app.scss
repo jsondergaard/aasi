@@ -1,8 +1,14 @@
 // Fonts
-@import url('https://fonts.bunny.net/css?family=Source+Sans+Pro');
+@import url('https://fonts.bunny.net/css?family=Open+Sans');
 
 // Variables
 @import 'variables';
 
+@import 'flickity/css/flickity';
+
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+
+@import 'swiper';
+
+@import 'sponsor';

@@ -9,32 +9,10 @@ use App\Http\Controllers\Controller;
 
 class OfferController extends Controller
 {
-	/**
-	 * Create a new controller instance.
-	 *
-	 * @return void
-	 */
-	public function __construct()
-	{
-		$this->middleware('auth');
-	}
-
-	/**
-	 * Show the application dashboard.
-	 *
-	 * @return \Illuminate\Contracts\Support\Renderable
-	 */
 	public function index()
 	{
 		return view('sponsors', [
-			'offers' => Sponsor::all(),
-		]);
-	}
-
-	public function view(Offer $offer)
-	{
-		return view('admin.sponsors.offers.create', [
-			'offers' => $offers,
+			'offers' => Offer::all(),
 		]);
 	}
 
@@ -45,13 +23,47 @@ class OfferController extends Controller
 		]);
 	}
 
+	public function edit(Sponsor $sponsor, Offer $offer)
+	{
+		return view('admin.sponsors.offers.edit', [
+			'offer' => $offer,
+		]);
+	}
+
+	public function update(Sponsor $sponsor, Offer $offer, StoreOffer $request)
+	{
+		$offer->update([
+			'name' => $request->name,
+			'description' => $request->description,
+			'cooldown' => ($request->cooldown != 0) ? $request->cooldown : null,
+		]);
+
+		if ($request->file('image')) {
+			$offer->upload($request->file('image'));
+		}
+
+		return redirect(route('admin.sponsors.index'));
+	}
+
 	public function store(Sponsor $sponsor, StoreOffer $request)
 	{
-		Offer::create([
+		$offer = Offer::create([
 			'name' => $request->name,
 			'description' => $request->description,
 			'sponsor_id' => $sponsor->id,
+			'cooldown' => ($request->cooldown != 0) ? $request->cooldown : null,
 		]);
+
+		if ($request->file('image')) {
+			$offer->upload($request->file('image'));
+		}
+
+		return redirect(route('admin.sponsors.index'));
+	}
+
+	public function destroy(Sponsor $sponsor, Offer $offer)
+	{
+		$offer->delete();
 
 		return redirect(route('admin.sponsors.index'));
 	}

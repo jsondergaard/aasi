@@ -58,45 +58,23 @@
                 </div>
             </div>
 
-
             <div class="col-4">
-                <label for="categories">Category</label>
-                <select name="categories[]" class="form-control" multiple>
-                    @foreach ($categories as $category)
-                        <option value="{{ $category->id }}" @if (is_array(old('categories')) && in_array($category->id, old('categories'))) selected @endif>
-                            {{ $category->name }}</option>
+                <label for="departments">Afdelinger</label>
+                <select name="departments[]" class="form-control" multiple>
+                    @foreach ($departments as $department)
+                        <option value="{{ $department->id }}" @if (is_array(old('department')) && in_array($department->id, old('departments'))) selected @endif>
+                            {{ $department->name }}</option>
                     @endforeach
                 </select>
 
-                @if ($errors->has('categories'))
+                @if ($errors->has('departments'))
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('categories') }}</strong>
+                        <strong>{{ $errors->first('departments') }}</strong>
                     </span>
                 @endif
             </div>
 
-            <div class="row mb-3">
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label for="departments">Tilknytning</label>
-                        <select name="departments[]" class="form-control">
-                            <option>Ingen</option>
-                            @foreach (\App\Models\Department::all() as $depmartent)
-                                <option value="{{ $department->id }}" @if (is_array(old('departments')) && in_array($department->id, old('departments'))) selected @endif>
-                                    {{ $department->name }}</option>
-                            @endforeach
-                        </select>
-
-                        @if ($errors->has('departments'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('departments') }}</strong>
-                            </span>
-                        @endif
-                    </div>
-                </div>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Opret</button>
+            <button type="submit" class="btn btn-primary mt-4">Opret</button>
         </form>
     </div>
 @endsection

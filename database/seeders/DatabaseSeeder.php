@@ -14,13 +14,6 @@ class DatabaseSeeder extends Seeder
 	 */
 	public function run()
 	{
-		$admin = \App\Models\User::factory()->create([
-			'name' => 'AASI',
-			'email' => 'kontakt@aasi.dk',
-		]);
-
-		$admin->assignRole('super-admin');
-
 		$departments = \App\Models\Page::factory()->create([
 			'name' => 'Afdelinger',
 			'is_page' => 0,
@@ -60,7 +53,22 @@ class DatabaseSeeder extends Seeder
 			'parent_id' => $aboutUs->id,
 		]);
 
-		\App\Models\User::factory(10)->create();
-		\App\Models\Sponsor::factory(5)->create();
+		\App\Models\Department::factory()->create([
+			'name' => 'Fodbold',
+		]);
+
+		\App\Models\Department::factory()->create([
+			'name' => 'Stangtennis',
+		]);
+
+		\App\Models\User::factory(10)->create()->each(function ($user) {
+			$user->departments()->attach(rand(1, 2));
+		});
+
+		\App\Models\Sponsor::factory(5)->create()->each(function ($sponsor) {
+			\App\Models\Offer::factory(3)->create([
+				'sponsor_id' => $sponsor->id,
+			]);
+		});
 	}
 }

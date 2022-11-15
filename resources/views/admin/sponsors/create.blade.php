@@ -2,35 +2,39 @@
 
 @section('main')
     <div class="container mt-4">
-        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Opret sponsor</h1>
-        </div>
-        <form action="{{ route('admin.sponsors.store') }}" method="POST">
+        <h1 class="h2">Opret sponsor</h1>
+        <form action="{{ route('admin.sponsors.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <div class="row mb-3">
-                <label for="name" class="col-md-4 col-form-label text-md-end">Sponsor navn</label>
-
-                <div class="col-md-6">
+                <div class="col-6">
+                    <label for="name" class="form-label">Navn</label>
                     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
                         name="name" value="{{ old('name') }}">
                 </div>
+
+                <div class="col-6">
+                    <label for="image" class="form-label">Billede</label>
+                    <input class="form-control @error('image') is-invalid @enderror" type="file" id="image"
+                        name="image">
+                </div>
             </div>
 
-            <div class="row mb-3">
-                <label for="image" class="col-md-4 col-form-label text-md-end">Vælg logo</label>
-                <div class="col-md-6">
-                <button type="file" id="image" name="image" accept="image/*" class="btn btn-primary">Vælg</button>
-                </div>
+            <div class="col-12">
+                <label for="link" class="form-label">Link</label>
+                <input class="form-control @error('link') is-invalid @enderror" type="text" id="link"
+                    name="link">
             </div>
-            
-            <div class="row mb-0">
-                <div class="col-md-8 offset-md-4">
-                    <button type="submit" class="btn btn-primary">
-                        Gem sponsor
-                    </button>
-                </div>
+
+            <div class="col-12">
+                <label for="description" class="form-label">Beskrivelse</label>
+                <textarea name="description" class="form-control @error('description') is-invalid @enderror" rows="5">{{ old('description') }}</textarea>
             </div>
-        </form>
+
+            <button type="submit" class="btn btn-primary mt-4">
+                Gem
+            </button>
+    </div>
+    </form>
     </div>
 @endsection

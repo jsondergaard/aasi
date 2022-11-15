@@ -29,7 +29,7 @@ class StorePage extends FormRequest
 				'required',
 				Rule::unique('pages')->ignore($this->route('page'))
 			],
-			'markdown' => 'required',
+			'content' => 'required',
 			'parent_id' => 'numeric',
 			'is_page' => '',
 		];
