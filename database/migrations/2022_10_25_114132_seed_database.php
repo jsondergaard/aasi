@@ -17,6 +17,7 @@ return new class extends Migration
 
 		Artisan::call('db:seed --class=PermissionsSeeder');
 		Artisan::call('db:seed --class=RolesSeeder');
+		Artisan::call('db:seed --class=DefaultSeeder');
 	}
 
 	/**

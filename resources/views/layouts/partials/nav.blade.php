@@ -1,7 +1,6 @@
 <nav class="py-2 bg-light border-bottom">
     <div class="container d-flex flex-wrap">
         <ul class="nav me-auto">
-            <li class="nav-item"><a href="/" class="nav-link px-2">Hjem</a></li>
             @foreach (\App\Models\Page::all() as $page)
                 @if ($page->children->count() > 0)
                     <li class="nav-item dropdown">
@@ -24,13 +23,12 @@
                     </li>
                 @endif
 
-                @if ($page->parent_id == 0 && !$page->children)
+                @if ($page->parent_id == 0 && $page->children->count() == 0)
                     <li class="nav-item">
                         <a href="{{ $page->path }}" class="nav-link px-2">{{ $page->name }}</a>
                     </li>
                 @endif
             @endforeach
-            <li class="nav-item"><a href="{{ route('sponsors') }}" class="nav-link px-2">Sponsorer</a></li>
             <li class="nav-item"><a href="{{ route('contact') }}" class="nav-link px-2">Kontakt</a></li>
         </ul>
         <ul class="nav">

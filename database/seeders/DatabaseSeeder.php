@@ -14,13 +14,6 @@ class DatabaseSeeder extends Seeder
 	 */
 	public function run()
 	{
-		$admin = \App\Models\User::factory()->create([
-			'name' => 'AASI',
-			'email' => 'kontakt@aasi.dk',
-		]);
-
-		$admin->assignRole('super-admin');
-
 		$departments = \App\Models\Page::factory()->create([
 			'name' => 'Afdelinger',
 			'is_page' => 0,

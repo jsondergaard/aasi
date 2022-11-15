@@ -16,7 +16,7 @@ return new class extends Migration
 		Schema::create('pages', function (Blueprint $table) {
 			$table->id();
 			$table->string('name');
-			$table->text('markdown')->nullable();
+			$table->text('content')->nullable();
 			$table->string('slug')->unique();
 			$table->unsignedBigInteger('parent_id')->nullable();
 			$table->unsignedBigInteger('author_id');

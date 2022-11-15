@@ -62,8 +62,8 @@
 
             <div class="row mb-3">
                 <div class="col-md-12">
-                    <label for="markdown" class="form-label">Brødtekst (markdown)</label>
-                    <textarea class="form-control" id="markdown" rows="10" name="markdown">{{ old('markdown') }}</textarea>
+                    <label for="content" class="form-label">Brødtekst (markdown)</label>
+                    <textarea class="form-control" id="content" rows="10" name="content">{{ old('content') }}</textarea>
                 </div>
             </div>
 
@@ -85,7 +85,7 @@
 
     <script>
         var simplemde = new SimpleMDE({
-            element: document.getElementById("markdown")
+            element: document.getElementById("content")
         });
     </script>
 @endpush

@@ -57,7 +57,7 @@ class PageController extends Controller
 	{
 		Page::create([
 			'name' => $request->name,
-			'markdown' => $request->markdown,
+			'content' => $request->content,
 			'parent_id' => ($request->parent_id == 0) ? null : $request->parent_id,
 			'is_page' => ($request->is_page) ? 1 : 0,
 			'author_id' => auth()->user()->id,
@@ -76,7 +76,7 @@ class PageController extends Controller
 	{
 		$page->update([
 			'name' => $request->name,
-			'markdown' => $request->markdown,
+			'content' => $request->content,
 			'parent_id' => ($request->parent_id == 0) ? null : $request->parent_id,
 			'is_page' => ($request->is_page) ? 1 : 0,
 		]);

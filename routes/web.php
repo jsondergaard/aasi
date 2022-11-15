@@ -2,7 +2,11 @@
 
 Auth::routes();
 
-Route::view('/', 'welcome');
+Route::get('/', function () {
+	return view('page', [
+		'page' => \App\Models\Page::where('id', 1)->firstOrFail()
+	]);
+});
 
 Route::get('/sponsors', [App\Http\Controllers\SponsorController::class, 'index'])->name('sponsors');
 Route::get('/settings', [App\Http\Controllers\SettingsController::class, 'index'])->name('settings');

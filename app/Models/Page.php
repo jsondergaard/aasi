@@ -12,7 +12,7 @@ class Page extends Model
 	use HasFactory, Sluggable;
 
 	protected $fillable = [
-		'name', 'markdown', 'parent_id', 'is_page', 'author_id',
+		'name', 'content', 'parent_id', 'is_page', 'author_id',
 	];
 
 	/**
