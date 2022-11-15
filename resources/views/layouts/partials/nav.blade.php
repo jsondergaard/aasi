@@ -2,7 +2,7 @@
     <div class="container d-flex flex-wrap">
         <ul class="nav me-auto">
             <li class="nav-item"><a href="/" class="nav-link px-2">Hjem</a></li>
-            @foreach (\App\Models\Page::all() as $page)
+            @foreach (\App\Models\Page::orderBy('order_id')->get() as $page)
                 @if ($page->children->count() > 0)
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="{{ $page->path }}" role="button"
@@ -15,7 +15,7 @@
                                     <a class="dropdown-item" href="{{ $page->path }}">{{ $page->name }}</a>
                                 </li>
                             @endif
-                            @foreach ($page->children as $child)
+                            @foreach (\App\Models\Page::where('parent_id', $page->id)->orderBy('order_id')->get() as $child)
                                 <li>
                                     <a class="dropdown-item" href="{{ $child->path }}">{{ $child->name }}</a>
                                 </li>
