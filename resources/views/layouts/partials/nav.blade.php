@@ -1,4 +1,4 @@
-<nav class="py-2 bg-light border-bottom">
+<nav class="navbar navbar-expand-md">
     <div class="container d-flex flex-wrap justify-content-between">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,7 +9,7 @@
             </svg>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="nav me-auto">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 @foreach (\App\Models\Page::orderBy('order_id')->get() as $page)
                     @if ($page->children->count() > 0)
                         <li class="nav-item dropdown">
