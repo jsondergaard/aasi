@@ -16,6 +16,9 @@
 
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/logo.png">
+
 </head>
 
 <body class="d-flex flex-column h-100">

@@ -21,6 +21,12 @@
             </div>
 
             <div class="col-12">
+                <label for="link" class="form-label">Link</label>
+                <input class="form-control @error('link') is-invalid @enderror" type="text" id="link"
+                    name="link">
+            </div>
+
+            <div class="col-12">
                 <label for="description" class="form-label">Beskrivelse</label>
                 <textarea name="description" class="form-control @error('description') is-invalid @enderror" rows="5">{{ old('description') }}</textarea>
             </div>

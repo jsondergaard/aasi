@@ -46,7 +46,8 @@ class SponsorController extends Controller
 	{
 		$sponsor->update([
 			'name' => $request->name,
-			'description' => $request->description
+			'description' => $request->description,
+			'link' => $request->link,
 		]);
 
 		if ($request->file('image')) {
@@ -61,6 +62,7 @@ class SponsorController extends Controller
 		$sponsor = Sponsor::create([
 			'name' => $request->name,
 			'description' => $request->description,
+			'link' => $request->link,
 		]);
 
 		if ($request->file('image')) {

@@ -14,7 +14,7 @@ class Sponsor extends Model
 	use HasFactory, HasUploads;
 
 	protected $fillable = [
-		'name', 'description',
+		'name', 'description', 'link',
 	];
 
 	public function offers()
