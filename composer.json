@@ -10,6 +10,7 @@
         "graham-campbell/markdown": "^14.0",
         "guzzlehttp/guzzle": "^7.5",
         "intervention/image": "^2.7",
+        "laracasts/flash": "^3.2",
         "laravel/framework": "^9.34",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",

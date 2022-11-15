@@ -26,6 +26,8 @@
 <body class="d-flex flex-column h-100">
     @include('layouts.partials.nav')
 
+    @include('flash::message')
+
     @yield('main')
 
     @include('layouts.partials.footer')

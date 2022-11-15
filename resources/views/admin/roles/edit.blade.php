@@ -29,8 +29,8 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="name">Navn</label>
-                        <input type="text" name="name" class="form-control" value="{{ old('name', $role->name) }}"
-                            required autofocus>
+                        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
+                            value="{{ old('name', $role->name) }}" required autofocus>
 
                         @if ($errors->has('name'))
                             <span class="invalid-feedback" role="alert">

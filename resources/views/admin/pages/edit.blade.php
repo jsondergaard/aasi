@@ -33,8 +33,8 @@
                 <div class="col-md-5">
                     <div class="form-group">
                         <label for="name">Navn</label>
-                        <input type="text" name="name" class="form-control" value="{{ old('name', $page->name) }}"
-                            required autofocus>
+                        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
+                            value="{{ old('name', $page->name) }}" required autofocus>
 
                         @if ($errors->has('name'))
                             <span class="invalid-feedback" role="alert">
@@ -48,7 +48,7 @@
                     <div class="form-group">
                         <label for="parent_id">Forældre side</label>
                         @if ($page->children->count() == 0)
-                            <select name="parent_id" class="form-control">
+                            <select name="parent_id" class="form-control @error('parent_id') is-invalid @enderror">
                                 <option value="0">Ingen</option>
                                 @foreach ($availablePages as $availablePage)
                                     <option value="{{ $availablePage->id }}"
@@ -103,7 +103,7 @@
                 <div class="col-md-2">
                     <div class="form-group">
                         <label for="order_id">Orden ID</label>
-                        <input type="number" name="order_id" class="form-control"
+                        <input type="number" name="order_id" class="form-control @error('order_id') is-invalid @enderror"
                             value="{{ old('order_id', $page->order_id) }}" min="1" max="10" autofocus>
 
                         @if ($errors->has('order_id'))
@@ -119,7 +119,7 @@
             <div class="row mb-3">
                 <div class="col-md-12">
                     <label for="content" class="form-label">Brødtekst (markdown)</label>
-                    <textarea class="form-control" id="content" rows="10" name="content">{{ old('content', $page->content) }}</textarea>
+                    <textarea class="form-control @error('content') is-invalid @enderror" id="content" rows="10" name="content">{{ old('content', $page->content) }}</textarea>
                 </div>
             </div>
 

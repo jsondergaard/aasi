@@ -19,6 +19,7 @@ Route::group(['prefix' => 'offers'], function () {
 });
 
 Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact');
+Route::post('/contact', [App\Http\Controllers\ContactController::class, 'send'])->name('contact.send');
 
 Route::view('/about-us', 'about-us')->name('about-us');
 Route::view('/by-laws', 'by-laws')->name('by-laws');
