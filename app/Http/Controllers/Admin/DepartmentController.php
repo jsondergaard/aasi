@@ -53,4 +53,12 @@ class DepartmentController extends Controller
 
 		return redirect(route('admin.departments.index'));
 	}
+
+	public function viewMembers(Department $department)
+	{
+		return view('admin.departments.members', [
+			'department' => $department,
+			'members' => $department->users,
+		]);
+	}
 }

@@ -18,6 +18,7 @@
                     <th scope="col">ID</th>
                     <th scope="col">Navn</th>
                     <th scope="col">Email</th>
+                    <th scope="col">Afdelinger</th>
                     <th scope="col">Oprettet</th>
                     <th scope="col"></th>
                     @can('update user' || 'delete user')
@@ -31,6 +32,7 @@
                         <th scope="row">{{ $user->id }}</th>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
+                        <td>{{ $user->departments()->count() }}</td>
                         <td>{{ $user->created_at->diffForHumans() }}</td>
                         <td>
                             <div class="d-flex justify-content-end">

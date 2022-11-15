@@ -33,6 +33,7 @@ Route::group(['prefix' => 'departments'], function () {
 	Route::get('/create', [App\Http\Controllers\Admin\DepartmentController::class, 'create'])->middleware(['permission:create department'])->name('admin.departments.create');
 	Route::post('/create', [App\Http\Controllers\Admin\DepartmentController::class, 'store'])->middleware(['permission:create department'])->name('admin.departments.store');
 	Route::get('/{department}', [App\Http\Controllers\Admin\DepartmentController::class, 'edit'])->middleware(['permission:update department'])->name('admin.departments.edit');
+	Route::get('/{department}/members', [App\Http\Controllers\Admin\DepartmentController::class, 'viewMembers'])->middleware(['permission:view departments'])->name('admin.departments.members');
 	Route::patch('/{department}', [App\Http\Controllers\Admin\DepartmentController::class, 'update'])->middleware(['permission:update department'])->name('admin.departments.update');
 	Route::delete('/{department}', [App\Http\Controllers\Admin\DepartmentController::class, 'destroy'])->middleware(['permission:delete department'])->name('admin.departments.destroy');
 });
@@ -44,6 +45,10 @@ Route::group(['prefix' => 'users'], function () {
 	Route::get('/{user}', [App\Http\Controllers\Admin\UserController::class, 'edit'])->middleware(['permission:update user'])->name('admin.users.edit');
 	Route::patch('/{user}', [App\Http\Controllers\Admin\UserController::class, 'update'])->middleware(['permission:update user'])->name('admin.users.update');
 	Route::delete('/{user}', [App\Http\Controllers\Admin\UserController::class, 'destroy'])->middleware(['permission:delete user'])->name('admin.users.destroy');
+
+	Route::group(['prefix' => '{user}/department'], function () {
+		Route::get('/{department}', [App\Http\Controllers\Admin\UserController::class, 'toggleDepartment'])->middleware(['permission:update user'])->name('admin.users.department.toggle');
+	});
 });
 
 Route::group(['prefix' => 'roles'], function () {

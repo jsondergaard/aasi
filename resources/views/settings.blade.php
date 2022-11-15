@@ -8,7 +8,13 @@
                     <div class="card-header">Medlemskab</div>
 
                     <div class="card-body">
-                        Du er ikke medlem din bums
+                        @forelse (auth()->user()->departments as $department)
+                            <p>
+                                {{ $department->name }} – Medlem siden {{ $department->pivot->created_at->format('d-m-Y') }}
+                            </p>
+                        @empty
+                            Du er ikke medlem af nogle afdelinger
+                        @endforelse
                     </div>
                 </div>
             </div>

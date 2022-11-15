@@ -96,4 +96,11 @@ class UserController extends Controller
 
 		return redirect(route('admin.users.index'));
 	}
+
+	public function toggleDepartment(User $user, Department $department)
+	{
+		$user->departments()->toggle($department->id, ['created_at' => now()]);
+
+		return back();
+	}
 }
