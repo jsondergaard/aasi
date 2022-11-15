@@ -24,9 +24,9 @@ class DefaultSeeder extends Seeder
 		\App\Models\Page::factory()->create([
 			'name' => 'Hjem',
 			'content' => '<div class="position-relative overflow-hidden p-3 p-md-5 text-center text-white shadow-lg"
-        style="background: linear-gradient(27deg, rgba(19, 41, 59, 0.3) 0%, rgba(18, 54, 37, 0.5) 64%, rgba(30, 14, 43, 0.625) 100%), center / cover no-repeat url(\'/garden.jpg\');">
+        style="background: linear-gradient(27deg, rgba(19, 41, 59, 0.3) 0%, rgba(18, 54, 37, 0.5) 64%, rgba(30, 14, 43, 0.625) 100%), center / cover no-repeat url(\'https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2493&q=80\');">
         <div class="col-md-5 p-lg-5 mx-auto my-5">
-            <h1 class="display-4 font-weight-bold text-white text-uppercase">Aalborg Studenternes Idrætsforening</h1>
+            <h1 class="display-4 font-weight-bold text-white text-uppercase">AASI</h1>
             <p class="lead font-weight-normal">Brødtekst</p>
         </div>
     </div> <div class="container">
@@ -51,9 +51,9 @@ class DefaultSeeder extends Seeder
 			'content' => '<div class="container mt-4">
 <h1>Sponsorer</h1>
 
-</div>
+<x-sponsors />
 
-<x-sponsors />',
+</div>',
 		]);
 	}
 }
