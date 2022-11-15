@@ -25,8 +25,5 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <x-sponsor :sponsors="\App\Models\Sponsor::all()" />
-        </div>
     </main>
 @endsection

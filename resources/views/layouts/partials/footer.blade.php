@@ -11,7 +11,7 @@
 
         <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
             <li class="ms-3">
-                <a class="text-muted" href="#">
+                <a class="text-muted" href="https://www.instagram.com/aasisport" target="_blank">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-instagram" viewBox="0 0 16 16">
                         <path
@@ -20,7 +20,7 @@
                 </a>
             </li>
             <li class="ms-3">
-                <a class="text-muted" href="#">
+                <a class="text-muted" href="https://www.facebook.com/aasi.aalborg" target="_blank">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-facebook" viewBox="0 0 16 16">
                         <path
