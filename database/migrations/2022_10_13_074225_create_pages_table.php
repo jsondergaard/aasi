@@ -21,6 +21,7 @@ return new class extends Migration
 			$table->unsignedBigInteger('parent_id')->nullable();
 			$table->unsignedBigInteger('author_id');
 			$table->boolean('is_page')->default(1);
+			$table->integer('order_id')->nullable();
 			$table->timestamps();
 		});
 	}

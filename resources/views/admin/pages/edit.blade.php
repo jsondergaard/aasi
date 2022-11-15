@@ -30,7 +30,7 @@
             @endforeach
 
             <div class="row mb-3">
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <div class="form-group">
                         <label for="name">Navn</label>
                         <input type="text" name="name" class="form-control" value="{{ old('name', $page->name) }}"
@@ -71,7 +71,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="form-group">
                         <label for="is_page">Vis i dropdown</label>
                         @if ($page->children->count() > 0)
@@ -99,6 +99,21 @@
                         @endif
                     </div>
                 </div>
+
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="order_id">Orden ID</label>
+                        <input type="number" name="order_id" class="form-control"
+                            value="{{ old('order_id', $page->order_id) }}" min="1" max="10" autofocus>
+
+                        @if ($errors->has('order_id'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('order_id') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+
             </div>
 
             <div class="row mb-3">
