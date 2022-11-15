@@ -1,7 +1,6 @@
 <nav class="py-2 bg-light border-bottom">
     <div class="container d-flex flex-wrap">
         <ul class="nav me-auto">
-            <li class="nav-item"><a href="/" class="nav-link px-2">Hjem</a></li>
             @foreach (\App\Models\Page::orderBy('order_id')->get() as $page)
                 @if ($page->children->count() > 0)
                     <li class="nav-item dropdown">

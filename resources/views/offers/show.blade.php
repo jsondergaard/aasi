@@ -12,7 +12,7 @@
             </a> --}}
             <div class="row">
                 <div class="col-md-6 col-sm-12">
-                    <img class="w-100 shadow-lg" height="450" style="object-fit: cover;" src="{{ $offer->imagePath }}">
+                    <img class="w-100 shadow" height="450" style="object-fit: cover;" src="{{ $offer->imagePath }}">
                 </div>
                 <div class="col-md-6 col-sm-12">
                     <h1>{{ $offer->name }}</h1>
@@ -21,13 +21,13 @@
                         <h4>Din kupon er aktiveret!</h4>
                         <p>Sidst brugt: {{ auth()->user()->usedOffer($offer)->diffForHumans() }}</p>
                     @else
-                        {{-- <form action="{{ route('offers.activate', $offer) }}" method="POST">
+                        <form action="{{ route('offers.activate', $offer) }}" method="POST">
                             @csrf
                             @method('PATCH')
                             <button type="submit" class="btn btn-lg btn-primary mb-5">Aktiver din kupon</button>
-                        </form> --}}
+                        </form>
 
-                        <div class="swiper">
+                        {{-- <div class="swiper">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                 width="260px" height="45px">
                                 <g id="dotted-line" class="dotted-line">
@@ -61,7 +61,7 @@
                             <div class="error">
                                 Der er kraftedeme sket en fejl. Beklager.
                             </div>
-                        </div>
+                        </div> --}}
                     @endif
                 </div>
             </div>

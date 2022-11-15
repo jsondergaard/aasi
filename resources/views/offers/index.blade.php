@@ -7,7 +7,7 @@
             @foreach ($offers as $offer)
                 <div class="col-lg-4 col-sm-6 g-4">
                     <a href="{{ route('offers.view', $offer) }}" class="text-decoration-none text-white">
-                        <div class="card shadow-sm"
+                        <div class="card shadow"
                             style="background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)), url({{ $offer->thumbnailPath }}); background-size:cover;background-position:center;">
                             <div class="card-body">
                                 @if (auth()->user()->usedOffer($offer))
