@@ -13,7 +13,7 @@ class LoginTest extends TestCase
 
 	protected function successfulLoginRoute()
 	{
-		return route('home');
+		return route('welcome');
 	}
 
 	protected function loginGetRoute()
@@ -38,7 +38,7 @@ class LoginTest extends TestCase
 
 	protected function guestMiddlewareRoute()
 	{
-		return route('home');
+		return route('welcome');
 	}
 
 	/** @test */
@@ -53,7 +53,7 @@ class LoginTest extends TestCase
 	/** @test */
 	public function user_cannot_view_a_login_form_when_authenticated()
 	{
-		$user = factory(User::class)->make();
+		$user = User::factory()->make();
 
 		$response = $this->actingAs($user)->get($this->loginGetRoute());
 
@@ -63,7 +63,7 @@ class LoginTest extends TestCase
 	/** @test */
 	public function user_can_login_with_correct_credentials()
 	{
-		$user = factory(User::class)->create([
+		$user = User::factory()->create([
 			'password' => bcrypt($password = 'i-love-laravel'),
 		]);
 
@@ -79,7 +79,7 @@ class LoginTest extends TestCase
 	/** @test */
 	public function remember_me_functionality()
 	{
-		$user = factory(User::class)->create([
+		$user = User::factory()->create([
 			'password' => bcrypt($password = 'i-love-laravel'),
 		]);
 
@@ -103,7 +103,7 @@ class LoginTest extends TestCase
 	{
 		$this->withExceptionHandling();
 
-		$user = factory(User::class)->create([
+		$user = User::factory()->create([
 			'password' => bcrypt('i-love-laravel'),
 		]);
 
@@ -139,45 +139,11 @@ class LoginTest extends TestCase
 	/** @test */
 	public function user_can_logout()
 	{
-		$this->be(factory(User::class)->create());
+		$this->be(User::factory()->create());
 
 		$response = $this->post($this->logoutRoute());
 
 		$response->assertRedirect($this->successfulLogoutRoute());
 		$this->assertGuest();
-	}
-
-	/** @test */
-	public function user_cannot_make_more_than_five_attempts_in_one_minute()
-	{
-		/*
-        $user = factory(User::class)->create([
-            'password' => bcrypt($password = 'i-love-laravel'),
-        ]);
-
-        foreach (range(0, 5) as $_) {
-            $response = $this->from($this->loginGetRoute())->post($this->loginPostRoute(), [
-                'email' => $user->email,
-                'password' => 'invalid-password',
-            ]);
-        }
-
-        $response->assertRedirect($this->loginGetRoute());
-        $response->assertSessionHasErrors('email');
-        $this->assertContains(
-            'For mange loginforsøg.',
-            collect($response
-                ->baseResponse
-                ->getSession()
-                ->get('errors')
-                ->getBag('default')
-                ->get('email')
-            )->first()
-        );
-        $this->assertTrue(session()->hasOldInput('email'));
-        $this->assertFalse(session()->hasOldInput('password'));
-        $this->assertGuest();
-        */
-		$this->assertTrue(true);
 	}
 }

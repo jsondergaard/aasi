@@ -2,7 +2,7 @@
 
 Auth::routes();
 
-Route::view('/', 'welcome');
+Route::view('/', 'welcome')->name('welcome');
 
 Route::get('/sponsors', [App\Http\Controllers\SponsorController::class, 'index'])->name('sponsors');
 Route::get('/settings', [App\Http\Controllers\SettingsController::class, 'index'])->name('settings');

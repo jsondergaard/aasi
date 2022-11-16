@@ -36,18 +36,18 @@ class ResetPasswordTest extends TestCase
 
 	protected function successfulPasswordResetRoute()
 	{
-		return route('home');
+		return route('welcome');
 	}
 
 	protected function guestMiddlewareRoute()
 	{
-		return route('home');
+		return route('welcome');
 	}
 
 	/** @test */
 	public function user_can_view_a_password_reset_form()
 	{
-		$user = factory(User::class)->create();
+		$user = User::factory()->create();
 
 		$response = $this->get($this->passwordResetGetRoute($token = $this->getValidToken($user)));
 
@@ -59,7 +59,7 @@ class ResetPasswordTest extends TestCase
 	/** @test */
 	public function user_cannot_view_a_password_reset_form_when_authenticated()
 	{
-		$user = factory(User::class)->create();
+		$user = User::factory()->create();
 
 		$response = $this->actingAs($user)->get($this->passwordResetGetRoute($this->getValidToken($user)));
 
@@ -70,7 +70,7 @@ class ResetPasswordTest extends TestCase
 	public function user_can_reset_password_with_valid_token()
 	{
 		Event::fake();
-		$user = factory(User::class)->create();
+		$user = User::factory()->create();
 
 		$response = $this->post($this->passwordResetPostRoute(), [
 			'token' => $this->getValidToken($user),
@@ -91,7 +91,7 @@ class ResetPasswordTest extends TestCase
 	/** @test */
 	public function user_cannot_reset_password_with_invalid_token()
 	{
-		$user = factory(User::class)->create([
+		$user = User::factory()->create([
 			'password' => bcrypt('old-password'),
 		]);
 
@@ -113,7 +113,7 @@ class ResetPasswordTest extends TestCase
 	{
 		$this->withExceptionHandling();
 
-		$user = factory(User::class)->create([
+		$user = User::factory()->create([
 			'password' => bcrypt('old-password'),
 		]);
 
@@ -138,7 +138,7 @@ class ResetPasswordTest extends TestCase
 	{
 		$this->withExceptionHandling();
 
-		$user = factory(User::class)->create([
+		$user = User::factory()->create([
 			'password' => bcrypt('old-password'),
 		]);
 
