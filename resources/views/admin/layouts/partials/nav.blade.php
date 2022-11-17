@@ -15,7 +15,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav me-auto">
                 @can('view dashboard')
                     <li class="nav-item">
                         <a href="{{ route('admin.home') }}" class="nav-link me-2">Hjem</a>
@@ -46,6 +46,47 @@
                         <a href="{{ route('admin.departments.index') }}" class="nav-link me-2">Afdelinger</a>
                     </li>
                 @endcan
+            </ul>
+
+            <ul class="navbar-nav">
+                @guest
+                    <li class="nav-item"><a href="{{ route('login') }}" class="nav-link">Log ind</a></li>
+                @else
+                    <li class="nav-item dropdown">
+                        <a id="navbarUserDropdown" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            {{ auth()->user()->name }}
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarUserDropdown">
+                            <a class="dropdown-item" href="{{ route('offers.index') }}">
+                                Kuponer
+                            </a>
+                            <hr>
+                            <a class="dropdown-item" href="{{ route('settings') }}">
+                                Indstillinger
+                            </a>
+
+                            @can('view dashboard')
+                                <a class="dropdown-item" href="{{ route('admin.home') }}">
+                                    Administration
+                                </a>
+                            @endcan
+
+                            <hr>
+
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                                   document.getElementById('logout-form').submit();">
+                                Log ud
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                @endguest
             </ul>
         </div>
     </div>
