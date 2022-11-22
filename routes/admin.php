@@ -59,3 +59,8 @@ Route::group(['prefix' => 'roles'], function () {
 	Route::patch('/{role}', [App\Http\Controllers\Admin\RoleController::class, 'update'])->middleware(['permission:update role'])->name('admin.roles.update');
 	Route::delete('/{role}', [App\Http\Controllers\Admin\RoleController::class, 'destroy'])->middleware(['permission:delete role'])->name('admin.roles.destroy');
 });
+
+Route::group(['prefix' => 'statistics'], function () {
+	Route::get('/', [App\Http\Controllers\Admin\StatisticsController::class, 'index'])->middleware(['permission:view statistics'])->name('admin.statistics.index');
+	Route::get('/{sponsor}', [App\Http\Controllers\Admin\StatisticsController::class, 'view'])->middleware(['permission:view statistics'])->name('admin.statistics.view');
+});

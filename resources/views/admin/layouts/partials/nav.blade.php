@@ -46,6 +46,11 @@
                         <a href="{{ route('admin.departments.index') }}" class="nav-link me-2">Afdelinger</a>
                     </li>
                 @endcan
+                @can('view statistics')
+                    <li class="nav-item">
+                        <a href="{{ route('admin.statistics.index') }}" class="nav-link me-2">Statistik</a>
+                    </li>
+                @endcan
             </ul>
         </div>
     </div>
