@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
 
+    <meta name="theme-color" content="#0b152a">
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -23,6 +25,8 @@
     @include('admin.layouts.partials.nav')
 
     @yield('main')
+
+    @include('layouts.partials.footer')
 
     @stack('scripts')
 </body>

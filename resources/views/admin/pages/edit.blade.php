@@ -30,10 +30,11 @@
             @endforeach
 
             <div class="row mb-3">
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <div class="form-group">
                         <label for="name">Navn</label>
-                        <input type="text" name="name" class="form-control" value="{{ old('name', $page->name) }}"
+                        <input type="text" name="name" id="name"
+                            class="form-control @error('name') is-invalid @enderror" value="{{ old('name', $page->name) }}"
                             required autofocus>
 
                         @if ($errors->has('name'))
@@ -48,7 +49,7 @@
                     <div class="form-group">
                         <label for="parent_id">Forældre side</label>
                         @if ($page->children->count() == 0)
-                            <select name="parent_id" class="form-control">
+                            <select name="parent_id" class="form-control @error('parent_id') is-invalid @enderror">
                                 <option value="0">Ingen</option>
                                 @foreach ($availablePages as $availablePage)
                                     <option value="{{ $availablePage->id }}"
@@ -71,9 +72,9 @@
                     </div>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="form-group">
-                        <label for="is_page">Vis i dropdown</label>
+                        <label for="is_page">Dropdown</label>
                         @if ($page->children->count() > 0)
                             <div class="form-check">
                                 <input class="form-check-input" name="is_page" type="checkbox" id="flexCheckChecked"
@@ -99,16 +100,38 @@
                         @endif
                     </div>
                 </div>
-            </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="order_id">Orden ID</label>
+                        <input type="number" id="order_id" name="order_id"
+                            class="form-control @error('order_id') is-invalid @enderror"
+                            value="{{ old('order_id', $page->order_id) }}" min="1" max="10" autofocus>
 
+                        @if ($errors->has('order_id'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('order_id') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+            </div>
             <div class="row mb-3">
                 <div class="col-md-12">
-                    <label for="markdown" class="form-label">Brødtekst (markdown)</label>
-                    <textarea class="form-control" id="markdown" rows="10" name="markdown">{{ old('markdown', $page->markdown) }}</textarea>
+                    <label for="content" class="form-label">Brødtekst (markdown)</label>
+                    <textarea class="form-control @error('content') is-invalid @enderror" id="content" rows="10" name="content">{{ old('content', $page->content) }}</textarea>
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary">Gem</button>
+            <div class="d-flex justify-content-between mb-4">
+                <a href="#" class="btn btn-outline-primary" id="btnReset" onClick="resetTextarea()">Nulstil til
+                    standard</a>
+
+                <button type="submit" class="btn btn-primary">Gem</button>
+            </div>
+
+            <pre>Tilgængelige tags:</pre>
+            <pre>Print sponsorlisten ud: &lt;x-sponsors /></pre>
+            <pre>Print sponsorkarusellen ud: &lt;x-sponsor /></pre>
         </form>
     </div>
 @endsection
@@ -126,7 +149,41 @@
 
     <script>
         var simplemde = new SimpleMDE({
-            element: document.getElementById("markdown")
+            element: document.getElementById("content")
         });
+    </script>
+
+    <script>
+        function resetTextarea() {
+            var name = document.getElementById("name").value;
+
+            if (name === "Hjem") {
+                simplemde.value(
+                    '<div class="position-relative overflow-hidden p-3 p-md-5 text-center text-white shadow-lg"' +
+                    'style="background: linear-gradient(27deg, rgba(19, 41, 59, 0.3) 0%, rgba(18, 54, 37, 0.5) 64%, rgba(30, 14, 43, 0.625) 100%), center / cover no-repeat url("https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2493&q=80");">\n' +
+                    '<div class="col-md-5 p-lg-5 mx-auto my-5">\n' +
+                    '<h1 class="display-4 font-weight-bold text-white text-uppercase">AASI</h1>\n\n' +
+                    '<p class="lead font-weight-normal">Brødtekst</p>\n\n' +
+                    '</div>\n' +
+                    '</div>\n\n <div class="container">\n' +
+                    '<div class="px-4 py-5 my-5 text-center">\n' +
+                    '<h1 class="display-5 fw-bold">Aalborg Studenternes Idrætsforening</h1>\n\n' +
+                    '<div class="col-lg-6 mx-auto">\n' +
+                    '<!-- Hey -->\n' +
+                    '<p class="lead mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid ratione consectetur' +
+                    'deleniti quae. Sunt consequuntur ipsam, nulla ipsa consectetur tempore suscipit molestiae' +
+                    'accusantium' +
+                    'voluptatem voluptatum expedita quibusdam, laborum soluta odio.</p>\n' +
+                    '<div class="d-grid gap-2 d-sm-flex justify-content-sm-center">\n' +
+                    '<button type="button" class="btn btn-primary btn-lg px-4 gap-3">Primary button</button>\n' +
+                    '<button type="button" class="btn btn-outline-secondary btn-lg px-4">Secondary</button>\n' +
+                    '</div>\n' +
+                    '</div>\n' +
+                    '</div>\n' +
+                    '</div>\n');
+            } else {
+                simplemde.value('<div class="container mt-4">\n  <h1>Overskriften</h1>\n<div>');
+            }
+        }
     </script>
 @endpush

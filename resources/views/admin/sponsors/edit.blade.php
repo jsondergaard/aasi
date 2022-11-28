@@ -26,23 +26,50 @@
             @csrf
             @method('PATCH')
             <div class="row">
-                <div class="col-6 mb-3">
+                <div class="col-6">
                     <label for="name" class="form-label">Navn</label>
                     <input name="name" class="form-control @error('name') is-invalid @enderror" type="text"
-                        id="name" value="{{ old('name', $sponsor->name) }}">
+                        id="name" value="{{ old('name', $sponsor->name) }}" />
+
+                    @if ($errors->has('name'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('name') }}</strong>
+                        </span>
+                    @endif
                 </div>
 
                 <div class="col-6">
                     <label for="image" class="form-label">Billede</label>
                     <input class="form-control @error('image') is-invalid @enderror" type="file" id="image"
-                        name="image">
+                        name="image" />
+
+                    @if ($errors->has('image'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('image') }}</strong>
+                        </span>
+                    @endif
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-6 mb-3">
+                <div class="col-12">
+                    <label for="link" class="form-label">Link</label>
+                    <input name="link" class="form-control @error('link') is-invalid @enderror" type="text"
+                        id="link" value="{{ old('link', $sponsor->link) }}">
+
+                    @if ($errors->has('link'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('link') }}</strong>
+                        </span>
+                    @endif
+                </div>
+                <div class="col-12">
                     <label for="name" class="form-label">Beskrivelse</label>
                     <textarea name="description" class="form-control @error('description') is-invalid @enderror" type="text"
                         cols="5" rows="3" id="description">{{ old('description', $sponsor->description) }}</textarea>
+
+                    @if ($errors->has('description'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('description') }}</strong>
+                        </span>
+                    @endif
                 </div>
             </div>
             <button type="submit" class="btn btn-primary mt-4">Gem</button>

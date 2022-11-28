@@ -1,7 +1,36 @@
+// Colours
+$primary: #2020e2;
+$gray-100: #ecf3f9;
+$gray-200: #dce9f1;
+$gray-300: #d1d9e5;
+$gray-400: #b8c8d8;
+$gray-500: #b5bbc2;
+$gray-600: #646e7c;
+$gray-700: #404655;
+$gray-800: #2f343e;
+$gray-900: #21252b;
+$red: rgb(201, 40, 56);
+$yellow: rgb(233, 178, 12);
+$green: rgb(22, 134, 48);
+$cyan: rgb(18, 125, 153);
+
 // Body
-$body-bg: #f8fafc;
+$body-bg: #e2edf7;
+
+$input-color: $gray-800;
+$dropdown-bg: $gray-300;
+$card-bg: $gray-200;
+$dropdown-link-hover-bg: $gray-400;
+$dropdown-link-color: $gray-700;
+$dropdown-link-hover-color: $gray-800;
+$text-muted: $gray-600;
+$input-bg: $gray-300;
 
 // Typography
-$font-family-sans-serif: 'Source Sans Pro', sans-serif;
+$font-family-sans-serif: 'Open Sans', sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
+$body-color: $gray-800;
+
+$link-color: darken($primary, 25%);
+$link-decoration: none;

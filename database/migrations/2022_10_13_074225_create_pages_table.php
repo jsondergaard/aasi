@@ -16,11 +16,12 @@ return new class extends Migration
 		Schema::create('pages', function (Blueprint $table) {
 			$table->id();
 			$table->string('name');
-			$table->text('markdown')->nullable();
+			$table->text('content')->nullable();
 			$table->string('slug')->unique();
 			$table->unsignedBigInteger('parent_id')->nullable();
 			$table->unsignedBigInteger('author_id');
 			$table->boolean('is_page')->default(1);
+			$table->integer('order_id')->nullable();
 			$table->timestamps();
 		});
 	}

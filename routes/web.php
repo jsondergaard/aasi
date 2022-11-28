@@ -2,7 +2,11 @@
 
 Auth::routes();
 
-Route::view('/', 'welcome')->name('welcome');
+Route::get('/', function () {
+	return view('page', [
+		'page' => \App\Models\Page::where('id', 1)->firstOrFail()
+	]);
+});
 
 Route::get('/sponsors', [App\Http\Controllers\SponsorController::class, 'index'])->name('sponsors');
 Route::get('/settings', [App\Http\Controllers\SettingsController::class, 'index'])->name('settings');
@@ -15,6 +19,7 @@ Route::group(['prefix' => 'offers'], function () {
 });
 
 Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact');
+Route::post('/contact', [App\Http\Controllers\ContactController::class, 'send'])->name('contact.send');
 
 Route::view('/about-us', 'about-us')->name('about-us');
 Route::view('/by-laws', 'by-laws')->name('by-laws');

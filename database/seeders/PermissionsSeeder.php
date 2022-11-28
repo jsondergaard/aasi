@@ -41,6 +41,7 @@ class PermissionsSeeder extends Seeder
 			'create department',
 			'update department',
 			'delete department',
+			'view statistics',
 		];
 
 		foreach ($permissions as $permission) {

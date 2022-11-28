@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
@@ -13,7 +14,7 @@ use App\Models\Offer;
 
 class User extends Authenticatable
 {
-	use HasApiTokens, HasFactory, HasRoles, Notifiable;
+	use HasApiTokens, HasFactory, HasRoles, Notifiable, SoftDeletes;
 
 	/**
 	 * The attributes that are mass assignable.
@@ -47,7 +48,12 @@ class User extends Authenticatable
 
 	public function departments()
 	{
-		return $this->belongsToMany(Department::class);
+		return $this->belongsToMany(Department::class)->withTimestamps();
+	}
+
+	public function memberOf(Department $department)
+	{
+		return $this->departments->find($department);
 	}
 
 	public function getListDepartmentsAttribute()

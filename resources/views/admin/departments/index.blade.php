@@ -19,9 +19,7 @@
                     <th scope="col">Navn</th>
                     <th scope="col">Medlemmer</th>
                     <th scope="col">Oprettet</th>
-                    @can('update department' || 'delete department')
-                        <th scope="col"></th>
-                    @endcan
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
@@ -33,6 +31,8 @@
                         <td>{{ $department->created_at->diffForHumans() }}</td>
                         <td>
                             <div class="d-flex justify-content-end">
+                                <a href="{{ route('admin.departments.members', $department) }}"
+                                    class="btn btn-success me-2">Medlemmer</a>
                                 @can('update department')
                                     <a href="{{ route('admin.departments.edit', $department) }}"
                                         class="btn btn-primary me-2">Rediger</a>

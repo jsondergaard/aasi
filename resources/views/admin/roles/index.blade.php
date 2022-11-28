@@ -17,6 +17,7 @@
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Navn</th>
+                    <th scope="col">Tilhører</th>
                     @can('update role' || 'delete role')
                         <th scope="col"></th>
                     @endcan
@@ -27,6 +28,7 @@
                     <tr>
                         <th scope="row">{{ $role->id }}</th>
                         <th scope="row">{{ $role->name }}</th>
+                        <th scope="row">{{ $role->users()->count() }}</th>
                         <th scope="row">
                             <div class="d-flex justify-content-end">
                                 @can('update role')

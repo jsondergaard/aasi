@@ -22,10 +22,11 @@ class PageFactory extends Factory
 
 		return [
 			'name' => fake()->company(),
-			'markdown' => $faker->markdown(),
+			'content' => $faker->markdown(),
 			'author_id' => User::firstOrFail()->id,
 			'parent_id' => null,
 			'is_page' => 1,
+			'created_at' => $this->faker->dateTimeBetween('-1 week'),
 		];
 	}
 }

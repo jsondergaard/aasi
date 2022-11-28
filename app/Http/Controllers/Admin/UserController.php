@@ -60,7 +60,6 @@ class UserController extends Controller
 			'name' => $request->name,
 			'email' => $request->email,
 			'gender' => $request->gender,
-			'password' => 'null',
 		]);
 
 		foreach ($request->departments as $department) {
@@ -89,5 +88,19 @@ class UserController extends Controller
 		$user->syncRoles($request->role);
 
 		return redirect(route('admin.users.edit', $user));
+	}
+
+	public function destroy(User $user)
+	{
+		$user->delete();
+
+		return redirect(route('admin.users.index'));
+	}
+
+	public function toggleDepartment(User $user, Department $department)
+	{
+		$user->departments()->toggle($department->id, ['created_at' => now()]);
+
+		return back();
 	}
 }
