@@ -6,6 +6,8 @@ use App\Models\User;
 use App\Models\Department;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreUser;
+use App\Notifications\CreatedUser;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -60,13 +62,16 @@ class UserController extends Controller
 			'name' => $request->name,
 			'email' => $request->email,
 			'gender' => $request->gender,
+			'password' => Hash::make($password = $this->generateRandomString()),
 		]);
 
-		foreach ($request->departments as $department) {
-			$user->departments()->toggle($department);
-		}
+		$user->notify(new CreatedUser($password));
 
-		// TODO: Send an email
+		if ($request->departments) {
+			foreach ($request->departments as $department) {
+				$user->departments()->toggle($department);
+			}
+		}
 
 		return redirect(route('admin.users.index'));
 	}
@@ -102,5 +107,18 @@ class UserController extends Controller
 		$user->departments()->toggle($department->id, ['created_at' => now()]);
 
 		return back();
+	}
+
+	protected function generateRandomString($length = 10)
+	{
+		$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		$charactersLength = strlen($characters);
+		$randomString = '';
+
+		for ($i = 0; $i < $length; $i++) {
+			$randomString .= $characters[rand(0, $charactersLength - 1)];
+		}
+
+		return $randomString;
 	}
 }
