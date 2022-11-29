@@ -182,7 +182,9 @@
                     '</div>\n' +
                     '</div>\n');
             } else {
-                simplemde.value('<div class="container mt-4">\n  <h1>Overskriften</h1>\n<div>');
+                simplemde.value(
+                    '<div class="container mt-4">\n  <h1>Overskriften</h1>\n\n  <p>første paragraf</p>\n  <p>anden paragraf</p>\n<div>'
+                );
             }
         }
     </script>
