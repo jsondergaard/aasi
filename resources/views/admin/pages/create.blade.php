@@ -80,7 +80,16 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary">Opret</button>
+            <div class="d-flex justify-content-between mb-4">
+                <a href="#" class="btn btn-outline-primary" id="btnReset" onClick="resetTextarea()">Nulstil til
+                    standard</a>
+
+                <button type="submit" class="btn btn-primary">Gem</button>
+            </div>
+
+            <pre>Tilgængelige tags:</pre>
+            <pre>Print sponsorlisten ud: &lt;x-sponsors /></pre>
+            <pre>Print sponsorkarusellen ud: &lt;x-sponsor /></pre>
         </form>
     </div>
 @endsection
@@ -100,5 +109,13 @@
         var simplemde = new SimpleMDE({
             element: document.getElementById("content")
         });
+    </script>
+
+    <script>
+        function resetTextarea() {
+            simplemde.value(
+                '<div class="container mt-4">\n  <h1>Overskriften</h1>\n\n  <p>første paragraf</p>\n  <p>anden paragraf</p>\n<div>'
+            );
+        }
     </script>
 @endpush
